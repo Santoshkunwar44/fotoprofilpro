@@ -1,0 +1,89 @@
+.Card{
+    padding: 1.2rem;
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+    background-color: var(--light_dark_color);
+    color: white;
+    height: fit-content;
+    border-radius: 20px;
+
+}
+.cardHeader{
+    display: flex;
+    flex-direction: column;
+}
+.draggable{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border_color);
+    width: 100%;
+    height: 120px;
+    cursor: pointer;
+    border-radius: 8px;
+    gap: 10px;
+    /* padding: 1rem; */
+}
+/* .upload_icon{
+    color: var(--primary_text_color);
+    font-size: 2rem !important;
+} */
+.draggable svg{
+    font-size: 2rem !important;
+    color: var(--primary_text_color);
+}
+.card_secondary_text{
+    font-size: 12px;
+}
+.card_header_text{
+    font-size: 20px;
+    letter-spacing: 1px;
+        color: var(--primary_text_color);
+}
+
+.notesHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+.hrline{
+    flex: 1;
+    height: 1px;
+    background-color: var(--border_color);
+}
+
+.draggable_second_text{
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: gray;
+}
+.or_text{
+    color: var(--primary_text_color);
+}
+.create_variation_button{
+
+
+
+    padding: 0 10px;
+
+    height: 34px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: var(--primary_text_color);
+
+    letter-spacing: 1px;
+
+}
+.upload_from_url_text{
+    color: gray;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+}

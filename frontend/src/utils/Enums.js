@@ -1,0 +1,5 @@
+export const Enums ={
+    COLLECTION_IMAGE:"COLLECTION_IMAGE",
+    UPSCALE_IMAGE:"UPSCALE_IMAGE"
+
+}

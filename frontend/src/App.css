@@ -1,0 +1,47 @@
+:root{
+  --light_dark_color:#1B1D20;
+  --dark_color:#111212;
+  --light_color:#2D2F33;
+  --primary_text_color:#37e710;
+  --border_color:rgba(128, 128, 128, 0.323);
+}
+body{
+  background-color: var(--dark_color) !important;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.App{
+  width: 100vw;
+}
+.app_container{
+  width: 100vw;
+  display: flex;
+  padding: 2rem;
+  
+}
+.app_content{
+  flex: 9;
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.text{
+  /* color: var(--light_color); */
+  color: gray;
+  font-size: 12px;
+  letter-spacing: 0.91px;
+}
+.home{
+  display: flex;
+  padding: 2rem 0;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+}

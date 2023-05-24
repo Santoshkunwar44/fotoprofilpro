@@ -1,0 +1,25 @@
+.imageContainer{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    border-radius: 10px;
+    overflow: none;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;    
+    height: 100%;
+}
+.loadingBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+}
+.loadingBox p{
+    color: gray;
+    font-size: 11px;
+    letter-spacing: 1px;
+
+}
