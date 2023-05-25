@@ -1,0 +1,56 @@
+.banner_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 4em;
+}
+.banner_img{
+    width: 80%;
+}
+.banner_left{
+    width: 75%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+}
+.banner_left h1{
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    line-height: 45px;
+    font-weight: 500;
+    word-break: break-all;
+
+    color: rgb(233, 233, 233);
+}
+.banner_sub_heading{
+    line-height: 25px;
+    letter-spacing: 1.4px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.685);
+}
+.banner_right{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+.try_now_button{
+    background-color: #bd00bd;
+    color: white;
+    width: 125px;
+    height: 40px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    background-color: #302b68;
+    letter-spacing: 1px;
+    color: white;
+    border-radius: 3px;
+}

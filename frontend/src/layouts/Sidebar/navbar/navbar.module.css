@@ -1,0 +1,27 @@
+.navbar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 1rem;
+}
+.navbar .logo_img{
+    width: 100px !important;
+}
+.logged_user_img{
+    width: 45px;
+    border-radius: 50%;
+    height: 45px;
+}
+.loggedInBox{
+    gap: 10px;
+    display: flex;
+}
+
+.loggedInusername{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.loggedInBox p  {
+    font-size: 10px;
+    color: gray;
+}

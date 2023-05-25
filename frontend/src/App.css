@@ -1,12 +1,15 @@
 :root{
   --light_dark_color:#1B1D20;
   --dark_color:#111212;
+  --background_dark_gradient:linear-gradient(45deg,#111212,#130f40);
   --light_color:#2D2F33;
   --primary_text_color:#37e710;
   --border_color:rgba(128, 128, 128, 0.323);
 }
 body{
-  background-color: var(--dark_color) !important;
+  background: var(--background_dark_gradient) !important;
+  height: 100vh;
+  color: rgb(207, 206, 206);
 }
 
 ::-webkit-scrollbar{
@@ -15,6 +18,7 @@ body{
 
 .App{
   width: 100vw;
+  padding: 2rem;
 }
 .app_container{
   width: 100vw;
@@ -37,7 +41,7 @@ body{
 }
 .home{
   display: flex;
-  padding: 2rem 0;
+  padding: 0 2rem ;
   justify-content: center;
   flex-direction: column;
   margin: auto;
