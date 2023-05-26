@@ -1,0 +1,45 @@
+.workSpace{
+    width: 100%;
+
+
+}
+.workList{
+    display: flex;
+    flex-wrap: wrap;
+            gap: 4rem;
+}
+
+.workItem {
+display: flex;
+gap: 2rem;
+backdrop-filter: blur(29px);
+flex-direction: column;
+padding: 2rem 1rem;
+border-radius: 10px;
+background-color: rgba(118, 114, 114, 0.087);
+align-items: center;
+justify-content: center;
+flex: 1;
+}
+.workItem img{
+    width: 80% ;
+
+}
+
+.workItem button{
+    width: fit-content;
+    height: 35px;
+    background-color: #302b68ba;
+    width: 120px;
+    padding: 0 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-radius: 4px;
+}
+.work_desc{
+    color: gray;
+    width: 80%;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 13px;
+}

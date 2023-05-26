@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom"
 import styles from "./navbar.module.css"
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
         <div>
 
-        <img  className={styles.logo_img} src="/images/logo.png" alt="logo" width={"100px"} />
+<Link to={"/"}>
+      <img  className={styles.logo_img} src="/images/logo.png" alt="logo" width={"100px"} />
+</Link>  
         </div>
         <div className={styles.loggedInBox}>
             <img className={styles.logged_user_img} src="/images/boy1.png" alt="boy1" />

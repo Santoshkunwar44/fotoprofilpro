@@ -7,10 +7,7 @@ import Navbar from '../../layouts/Sidebar/navbar/Navbar'
 const Home = () => {
   return (
     <div className='home'>
-   
       <Banner/>
-        {/* <Card/> */}
-        {/* <ImageContainer/> */}
     </div>
   )
 }

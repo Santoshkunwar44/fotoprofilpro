@@ -92,9 +92,8 @@ const handleFileChange =async(event)=>{
   <AccordionItem   border={"none"} pb={1}>
       <AccordionButton >
         <Box as="span" flex='1' textAlign='left' >
-
            <p className="upload_from_url_text"> 
-           Upload image from Url
+           Upload image from Url 
            </p>
         </Box>
         <AccordionIcon />
