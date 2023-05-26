@@ -51,15 +51,16 @@ class ImageService{
 
     // returns meessage id
     async createImagine(){
-        try {
+        try {   
+                this.StartFetching()
                 const {data,status} = await mjImagineApi({
                     msg:`${this.imgPrompt} normal`
                 });
+                this.setImgPrompt("")
                 if(status===200){
                     const {messageId} = data;
                     await this.handleIntervalCall(messageId)       
                 }
-
         } catch (error) {
             console.log(error)
         }
@@ -73,6 +74,7 @@ class ImageService{
         let id =  setInterval(async() => {
           
             if(i===4){
+                this.StopFetching()
                 return clearInterval(id)
             }
             
@@ -81,7 +83,7 @@ class ImageService{
              this.AddMJImages(imageUrl)
              i++;
 
-         }, 1500);
+         }, 2000);
     }
 
 
@@ -91,20 +93,23 @@ class ImageService{
         let messageIdArr = []
         let i =0;
        let id =  setInterval(async() => {
-           console.log(messageIdArr)
+           console.log(messageIdArr,i)
             let button= buttons[i];
             if(i=== 4){
-                this.getSinglePhotoMessage(messageIdArr)
                 console.log('all',messageIdArr)
                 return clearInterval(id)
             }
-            const {status,data:{messageId} } =await  MjUpscaleApi({
-                button,
-                buttonMessageId
-            })
-            i++;
-            messageIdArr.push(messageId)
-        }, 1000);
+            try {
+                const {status,data:{messageId} } =await  MjUpscaleApi({
+                    button,
+                    buttonMessageId
+                })
+                i++;
+                messageIdArr.push(messageId)
+            } catch (error) {
+                console.log(error)
+            }
+        }, 3000);
     }
 
 

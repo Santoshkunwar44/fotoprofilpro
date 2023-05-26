@@ -1,14 +1,28 @@
+.card_container{
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
 .Card{
     padding: 1.2rem;
-   width: 50%;
+   width: 100%;
    display: flex;
    flex-direction: column;
    gap: 1.5rem;
-    background-color: var(--light_dark_color);
     color: white;
-    height: fit-content;
     border-radius: 20px;
-
+    margin: auto;
+    backdrop-filter:blur(10px);
+    position: relative;
+    z-index: 1;
+}
+.bug_image{
+    position: absolute !important;
+    right: -65px !important;
+    z-index: -1 !important;
+    top: -6% !important;
+    width: 150px;
 }
 .cardHeader{
     display: flex;
@@ -20,13 +34,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--border_color);
+    border: 3px dashed var(--border_color);
     width: 100%;
-    height: 120px;
     cursor: pointer;
-    border-radius: 8px;
-    gap: 10px;
-    /* padding: 1rem; */
+    border-radius: 14px;
+    gap: 1px;
+    padding: 2rem  1rem;
+    transition: all .31s ease-in-out  ;
+
+}
+.draggable:hover{
+    border-color: #3f51b533;
+    scale: 1.02;
 }
 /* .upload_icon{
     color: var(--primary_text_color);
@@ -36,14 +55,7 @@
     font-size: 2rem !important;
     color: var(--primary_text_color);
 }
-.card_secondary_text{
-    font-size: 12px;
-}
-.card_header_text{
-    font-size: 20px;
-    letter-spacing: 1px;
-        color: var(--primary_text_color);
-}
+
 
 .notesHeader{
     width: 100%;
@@ -63,21 +75,17 @@
     color: gray;
 }
 .or_text{
-    color: var(--primary_text_color);
+    color: #3f51b533;
+    font-weight: bold;
 }
 .create_variation_button{
-
-
-
     padding: 0 10px;
-
     height: 34px;
     border: none;
     outline: none;
     cursor: pointer;
     border-radius: 2px;
     background-color: var(--primary_text_color);
-
     letter-spacing: 1px;
 
 }
@@ -86,4 +94,20 @@
     font-size: 13px;
     letter-spacing: 1px;
 
+}
+.heapfileImg{
+    width: 200px !important;
+}
+.drag_here_text{
+    font-size: 14px;
+    color: gray;
+    letter-spacing: 1px;
+    line-height: 30px;
+
+    font-size: 13px;
+}   
+.drag_here_text.second_text{
+    line-height: 20px;
+    letter-spacing: 2px;
+ 
 }

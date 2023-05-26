@@ -63,6 +63,9 @@ const handleFileChange =async(event)=>{
 
   return (
     <>
+    <div className="card_container">
+
+      <img className="bug_image" style={{zIndex:"-1"}} src="/images/bug.png" alt="hieap" />
       <div className="Card">
         <div className="draggable" onClick={()=>fileRef.current.click()}> 
         {
@@ -71,9 +74,9 @@ const handleFileChange =async(event)=>{
          <p className="draggable_second_text">{`${file.name} ${Math.floor(file.size/1024)}MB`}</p>
          </>
           :   <>
-          <ImCloudUpload size={"48"} />
-         <h3 className="text">Drag image here</h3>
-         <p className="draggable_second_text">or, click to browse (4 MB max)</p>
+        <img className={"heapfileImg"} src="/images/heap.png" alt="hieap" width={"130px"} />
+         <h3 className="drag_here_text">Drag image file  here</h3>
+         <p className="drag_here_text second_text">  click to browse (4 MB max)</p>
          </>
         }
 
@@ -85,8 +88,8 @@ const handleFileChange =async(event)=>{
           <p className="or_text">OR</p>
           <div className="hrline"></div>
         </div>
-        <Accordion  borderRadius={"3px"} border={"1px solid rgba(128, 128, 128, 0.323)"}  _focusVisible={false} allowToggle={true} >
-  <AccordionItem border={"none"} pb={1}>
+        <Accordion   borderRadius={"3px"} border={"1px solid rgba(128, 128, 128, 0.323)"}  _focusVisible={false} allowToggle={true} >
+  <AccordionItem   border={"none"} pb={1}>
       <AccordionButton >
         <Box as="span" flex='1' textAlign='left' >
 
@@ -113,7 +116,7 @@ const handleFileChange =async(event)=>{
       }
       </div>
 
-
+</div>
     </>
   );
 };

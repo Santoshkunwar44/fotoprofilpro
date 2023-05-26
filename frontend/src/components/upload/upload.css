@@ -23,13 +23,13 @@ color: gray;
     border: none;
     outline: none;
     border-radius: 1px;
-    background-color: var(--light_color);
-    color: rgba(109, 109, 109, 0.479);
+    background-color: transparent;
+    color: gray;
 }
 .image_url_upload_input::placeholder{
     letter-spacing: 1px;
     font-size: 12px ;
-    color: rgba(109, 109, 109, 0.479);
+    color: gray;
 }
 .upload_input_box button{
     border: none;
