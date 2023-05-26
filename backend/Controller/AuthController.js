@@ -26,7 +26,6 @@ class AuthController{
                 throw Error("Invalid Email")
             }
             const isValid = await UserService.isPasswordCorrect(userExist._doc.password,password)
-            console.log(isValid,"isvalid ");
             if(isValid){
                 const {password,...others} = userExist._doc
                 return res.status(200).json({message:others,success:true})

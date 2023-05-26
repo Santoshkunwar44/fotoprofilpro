@@ -52,7 +52,6 @@ const handleFileChange =async(event)=>{
   const file = event.target.files[0];
   setFile(file)
   await ImageService.uploadImageToCloudinary(file);
-
 }
 
 

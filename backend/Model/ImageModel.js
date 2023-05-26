@@ -7,11 +7,12 @@ const ImageSchema = mongoose.Schema({
         ref:"User",
         required:true,
     },
+    content:String,
     messageId:String,
+    promtImg:String,
     collectionImg:String,
     images:Array,
     buttons:Array,
-    content:String,
 },{
     timestamps:true
 })

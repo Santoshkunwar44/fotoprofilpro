@@ -1,5 +1,5 @@
 import axios from "axios"
-import { MjUpscaleApi, getMjResponseApi, mjImagineApi } from "../api";
+import { AddImageInDb, MjUpscaleApi, getMjResponseApi, mjImagineApi } from "../api";
 import { Enums } from "../Enums";
 
 const cloudName ="onlinecoder"
@@ -54,11 +54,17 @@ class ImageService{
         try {   
                 this.StartFetching()
                 const {data,status} = await mjImagineApi({
-                    msg:`${this.imgPrompt} normal`
+                    msg:`${this.imgPrompt} ultra realistic creative `
                 });
-                this.setImgPrompt("")
                 if(status===200){
                     const {messageId} = data;
+                    await AddImageInDb({
+                        owner:"6470ddf84817e411c86215b9",
+                        content:`${this.imgPrompt} ultra realistic creative `,
+                        messageId ,
+                        promtImg:this.imgPrompt
+                    })
+                    this.setImgPrompt("")
                     await this.handleIntervalCall(messageId)       
                 }
         } catch (error) {
@@ -69,7 +75,6 @@ class ImageService{
 
 
     async getSinglePhotoMessage(messageArr){
-        console.log("inside the main",messageArr)
         let i =0;
         let id =  setInterval(async() => {
           
@@ -128,7 +133,7 @@ class ImageService{
                 this.setMjProgress(100);
                 clearInterval(this.uploadConfig.current.intervalId);
                 this.AddCollectionUrl(imageUrl)
-                this.getSinglePhotoMessageId(buttons,buttonMessageId)
+                // this.getSinglePhotoMessageId(buttons,buttonMessageId)
 
                 
             }else{
