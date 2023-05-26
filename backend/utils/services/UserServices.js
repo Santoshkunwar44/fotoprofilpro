@@ -20,6 +20,7 @@ class UserService{
                 const user = await UserModel.findOne({
                     email
                 })
+                console.log("the email",user)
                 return user
         } catch (error) {
             console.log(error)

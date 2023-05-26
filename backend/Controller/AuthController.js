@@ -7,7 +7,7 @@ class AuthController{
                 const userExist=await UserService.ifEmailExist(email)
                 if(!userExist){
                     req.body.password =  await UserService.hashPassword(password); 
-                    const savedUser = await UserModel(req.body);
+                    const savedUser = await UserModel.create(req.body);
                     return res.status(200).json({message:savedUser,success:true})
                 }else{
                     return res.status(400).json({message:"This email is already used", success:false})
