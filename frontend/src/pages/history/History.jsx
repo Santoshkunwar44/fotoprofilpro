@@ -18,8 +18,8 @@ export const History = () => {
 <p>image file</p>
 </div>
 <div className={styles.history_upload_item_info}>
-<p>Got response</p>
-<p>True</p>
+<p>Message Id</p>
+<p>42DGLA34flizxu#</p>
 </div>
 <div className={styles.history_upload_item_info}>
     <p>Fetched variations</p>

@@ -19,8 +19,11 @@ border-radius: 10px;
 background-color: rgba(118, 114, 114, 0.087);
 align-items: center;
 justify-content: center;
+cursor: pointer;
 flex: 1;
+/* transition: all .3s ease; */
 }
+
 .workItem img{
     width: 80% ;
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import styles from "./navbar.module.css"
+import styles from "./navbar.module.css";
+
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
@@ -13,8 +14,8 @@ const Navbar = () => {
             <img className={styles.logged_user_img} src="/images/boy1.png" alt="boy1" />
             <div>
 
-            <h4 className={styles.loggedInusername}>Santosh6969</h4>
-            <p>santehero69@gmail.com</p>
+            <h4 className={styles.loggedInusername}>Rajiv Shrestha</h4>
+            <p>rajivNewar123@gmail.com</p>
             </div>
         </div>
 
