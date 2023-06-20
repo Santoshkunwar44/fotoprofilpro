@@ -1,4 +1,5 @@
-const UserModel = require("../model/UserModel");
+
+const UserModel = require("../Model/UserModel");
 const {UserService} = require("../utils/services/UserServices")
 class AuthController{
     async handleRegister(req,res){

@@ -5,6 +5,7 @@
   --light_color:#2D2F33;
   --primary_text_color:#37e710;
   --border_color:rgba(128, 128, 128, 0.323);
+  --btn_bg:#302b68;
   --purple_blur_gradient:linear-gradient(49deg,#232637c7,#4b4ba166);
 }
 body{

@@ -1,0 +1,79 @@
+.modal_container{
+    border-radius: 10px !important;
+    backdrop-filter: blur(30px);
+    color: white !important;
+    background: rgba(26, 51, 105, 0.201) !important;
+    ;
+    padding: 1rem !important;
+    padding-top: 0.56rem !important;
+    padding-bottom: 2rem !important;
+
+}
+.modal_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.modal_header{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.modal_header h1{
+    font-weight: 100;
+    font-size: 1.6rem;
+    color: rgb(197, 197, 197);
+    letter-spacing: 1px;
+}
+.modal_header img{
+    width: 100px;
+}
+.modal_input{
+    width: 100%;
+    background-color: transparent !important;
+    height: 50px;
+    border: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    outline: none;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: rgba(120, 119, 119, 0.206) !important;
+}
+.modal_input::placeholder{
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(212, 212, 212, 0.724) ;
+}
+.modal_form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.login_btn{
+    background-color: var(--btn_bg);
+    height: 40px;
+
+    width: fit-content;
+    padding: 0 15px;
+    border-radius: 3px;
+
+    letter-spacing: 1px;
+}
+.modal_footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.modal_footer p{
+    font-size: 11px;
+    color: rgb(148, 149, 151);
+    letter-spacing: 1px;
+    cursor: pointer;
+
+}

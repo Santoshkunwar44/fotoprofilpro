@@ -29,4 +29,20 @@ export const setMjProgress=(payload)=>(dispatch)=>{
         type:ActionTypes.SET_MJ_PROGRESS,
         payload
     })
+
+}
+
+// user actions 
+
+export const addUserAction=(payload)=>(dispatch)=>{
+    dispatch({
+        type:ActionTypes.ADD_USER,
+        payload
+    })
+}
+
+export const removeUserAction=()=>(dispatch)=>{
+    dispatch({
+        type:ActionTypes.REMOVE_USER
+    })
 }
