@@ -1,4 +1,4 @@
-
+const ImageModel =  require("../Model/ImageModel")
 class ImageController{
     async handleCreateImage(req,res){
         try {
