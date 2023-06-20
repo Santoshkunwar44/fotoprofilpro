@@ -27,7 +27,7 @@ const Workspace = () => {
               className={styles.workItem}>
                             <img src="/images/history.png" alt="historyMachine" />
                 <p className={styles.work_desc}>Get your  image variations of  your past uploads .</p>
-               <Link to={'/history'}><button>MY HISTORY</button>
+               <Link to={'/assets'}><button>MY ASSETS</button>
 </Link>             </motion.div>
             <motion.div 
                     initial={"close"}

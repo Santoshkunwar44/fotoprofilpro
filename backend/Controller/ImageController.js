@@ -10,15 +10,27 @@ class ImageController{
     }
     async getImagesOfUser(req,res){
         const {owner} = req.params;
-
+        const {completed} = req.query;
+        let images ;
+        console.log(completed)
         try {
             if(!owner){
                 throw Error("Invalid request")
             }
-            const theImages = await ImageModel.find({
-                owner
-            })
-            res.status(200).json({message:theImages,success:true})
+
+            if(completed==="true"){
+
+                images = await ImageModel.find({
+                    owner ,
+                    completed:true
+                })
+            }else{
+                    images = await ImageModel.find({
+                    owner ,
+                    completed:false
+                })
+            }
+            res.status(200).json({message:images,success:true})
             
         } catch (error) {
             console.log(error)

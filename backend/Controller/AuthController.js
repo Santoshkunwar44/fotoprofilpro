@@ -8,6 +8,7 @@ class AuthController{
                 const userExist=await UserService.ifEmailExist(email)
                 if(!userExist){
                     req.body.password =  await UserService.hashPassword(password); 
+                    
                     const savedUser = await UserModel.create(req.body);
                     return res.status(200).json({message:savedUser,success:true})
                 }else{
@@ -49,6 +50,22 @@ class AuthController{
         }else{
             return res.status(500).json({message:"user is not logged in",success:false})
         }
+    }
+
+    async handleLogout(req,res){
+         try {
+      req.session.destroy((err) => {
+        if (err) {
+          throw Error(err);
+        }
+        res.clearCookie("photoprofile.sid");
+        res
+          .status(200)
+          .json({ message: "successfully logged out", success: true });
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message, success: false });
+    }
     }
 }
 module.exports = new AuthController();

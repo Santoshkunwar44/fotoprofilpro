@@ -66,7 +66,8 @@ import { actionCreators } from '../../redux/store'
         }   
       }
     } catch (error) {
-      console.log(error.message)
+
+      console.log(error)
     }
 
   }

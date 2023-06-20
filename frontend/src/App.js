@@ -10,11 +10,13 @@ import { loggedInUserApi } from "./utils/api";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./redux/store";
+import useAlert from "./hooks/useAlert";
+import useSocket from "./hooks/useSocket";
 function App() {
 
   const dispatch = useDispatch()
   const {addUserAction} = bindActionCreators(actionCreators,dispatch )
-
+  const socket = useSocket();
 
   useEffect(()=>{
     fetchLoggedInUser()
@@ -24,7 +26,6 @@ function App() {
     try {
          const res = await loggedInUserApi();
          if(res.status===200){
-          //  console.log(res.data.message)
           addUserAction(res.data.message)
          }
 
@@ -41,7 +42,7 @@ function App() {
         <Route path="/create" element={<Create/>}/>
         <Route path="/workspace" element={<Workspace/>}
          />
-         <Route  path="/history" element={<History/>}/>
+         <Route  path="/assets" element={<History/>}/>
        </Routes>
       </div>
     </>

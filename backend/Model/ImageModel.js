@@ -10,9 +10,17 @@ const ImageSchema = mongoose.Schema({
     content:String,
     messageId:String,
     promtImg:String,
-    collectionImg:String,
+    collectionImg:{
+        type:String,
+        default:""
+    },
     images:Array,
     buttons:Array,
+    completed:{
+        type:Boolean,
+        default:false,
+
+    },
     buttonId:String,
 },{
     timestamps:true

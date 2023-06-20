@@ -24,9 +24,10 @@ export const MjUpscaleApi=(data)=>MjAxiosInstance.post(`https://api.thenextleg.i
 
 export const AddImageInDb=(data)=>axiosInstance.post("/image/create",data);
 
-export const GetImagesOfUser=(userId)=>axiosInstance.get(`/image/${userId}`)
+export const GetCompletedImagesOfUserApi=(userId)=>axiosInstance.get(`/image/${userId}?completed=true`)
 
 
+export const GetProcessingImagesOfUserApi=(userId)=>axiosInstance.get(`/image/${userId}?completed=false`)
 
 
 
@@ -37,3 +38,5 @@ export const loginApi=(data)=>axiosInstance.post("/auth/login",data)
 export const registerApi=(data)=>axiosInstance.post("/auth/register",data)
 
 export const loggedInUserApi=()=>axiosInstance.get("/auth/loggedinUser")
+
+export const logoutApi=()=>axiosInstance.post("/auth/logout")

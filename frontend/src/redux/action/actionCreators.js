@@ -46,3 +46,10 @@ export const removeUserAction=()=>(dispatch)=>{
         type:ActionTypes.REMOVE_USER
     })
 }
+
+export const addActiveMessageIdAction=(payload)=>(dispatch)=>{
+    dispatch({
+        type:ActionTypes.ADD_ACTIVE_MESSAGE_ID,
+        payload
+    })
+}

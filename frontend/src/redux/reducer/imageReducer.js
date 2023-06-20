@@ -4,7 +4,8 @@ const INITIAL_STATE ={
     collection_image:null,
     isFetching:false,
     imageArr:[],
-    MjProgress:null
+    MjProgress:null,
+    activeMessageId:null,
     
 }
 export const imageReducer=(state=INITIAL_STATE,action)=>{
@@ -22,6 +23,8 @@ export const imageReducer=(state=INITIAL_STATE,action)=>{
             return {...state,isFetching:true }
         case ActionTypes.STOP_FETCHING:
             return {...state,isFetching:false }
+        case ActionTypes.ADD_ACTIVE_MESSAGE_ID:
+            return {...state,activeMessageId:action.payload}
     
         default:
             return state

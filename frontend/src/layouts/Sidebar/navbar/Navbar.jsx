@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import styles from "./navbar.module.css";
 import {useSelector} from "react-redux"
 import SignUpModal from "../../modal/Modal";
+import LogoutPopover from "../../popover/LogoutPopover";
 const Navbar = () => {
 
   const {data:loggedInUser}  = useSelector(state=>state.user )
@@ -19,14 +20,20 @@ const Navbar = () => {
         </div>
         {
 
-         loggedInUser ? <div className={styles.loggedInBox}>
+         loggedInUser ? <LogoutPopover>
+
+
+
+         <div className={styles.loggedInBox}>
             <img className={styles.logged_user_img} src="/images/boy1.png" alt="boy1" />
             <div>
 
             <h4 className={styles.loggedInusername}>{loggedInUser?.username}</h4>
             <p>{loggedInUser?.email}</p>
             </div>
-        </div> :<button className={styles.signInBtn}>
+        </div>
+         </LogoutPopover> 
+         :<button className={styles.signInBtn}>
 
           <SignUpModal>
             Sign up

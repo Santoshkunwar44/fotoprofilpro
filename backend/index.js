@@ -10,17 +10,23 @@ const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const { Server } = require("socket.io");
 require("dotenv").config()
+app.use(cors({
+    origin:["*","http://localhost:3000"],
+    methods:['POST','GET','PUT','DELETE'],
+    credentials:true
+}))
+
 const io = new Server(server, {
   cors: {
     origin: [
       process.env.FRONTEND_URL,
       "http://localhost:3000",
       "http://127.0.0.1:3000",
-    ],
+    ],    
     methods: ["GET", "POST","PUT"],
     credentials: true,
-  },
-})
+  },    
+})    
 
 const EventEmiter = new Emitter();
 app.set("EventEmitter", EventEmiter);
@@ -30,10 +36,10 @@ app.use(cookieParser())
 
 const store = MongoStore.create({
     mongoUrl: process.env.MONGO_URI,
-  collectionName: "session_user",
+  collectionName: "session_user",  
   ttl: 31556952000,
   autoRemove: "native",
-});
+});  
 
 app.use(
   session({
@@ -43,23 +49,17 @@ app.use(
     saveUninitialized:true,
     store,
     cookie:{
-      secure:true,
-      sameSite:"none",
+      secure:false,
+    
       httpOnly:true,
       maxAge:31556952000,
-    }
+    }  
 
-}))
+}))    
 
 require("dotenv").config()
 app.use(express.json())
 app.use(morgan("short"))
-app.use(cors({
-    origin:"*",
-    methods:['POST','GET','PUT','DELETE'],
-    credentials:true
-}))
-
 
 
 
