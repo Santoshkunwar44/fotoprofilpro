@@ -5,7 +5,7 @@ const UserSchema = mongoose.Schema({
 
     username:{
         type:String,
-        unique:true,
+ 
         required:true,
     },
     email:{
@@ -17,4 +17,4 @@ const UserSchema = mongoose.Schema({
 },{
     timestamps:true
 })
-module.exports = mongoose.model("User",UserSchema);
+module.exports = mongoose.model("User",UserSchema)

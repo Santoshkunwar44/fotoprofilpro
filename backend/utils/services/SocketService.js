@@ -15,7 +15,14 @@ class OnlineUsers{
 
     }
 
+    static removeUser(email){
 
+        this.usersList =  this.usersList.filter(user=>user.email !== email)
+
+    }
+    static removeUserById(socketId){
+                this.usersList =  this.usersList.filter(user=>user.socketId !== socketId)
+    }
 }
 
 class AppUser{

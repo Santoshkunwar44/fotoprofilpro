@@ -1,10 +1,15 @@
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const express = require("express")
 const app = express();
 const morgan = require("morgan")
 const Emitter = require("events");
 const http = require("http");
 const server = http.createServer(app);
+const MongoStore = require("connect-mongo")
+const session = require("express-session")
 const { Server } = require("socket.io");
+require("dotenv").config()
 const io = new Server(server, {
   cors: {
     origin: [
@@ -19,10 +24,33 @@ const io = new Server(server, {
 
 const EventEmiter = new Emitter();
 app.set("EventEmitter", EventEmiter);
+app.use(cookieParser())
 
+
+
+const store = MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+  collectionName: "session_user",
+  ttl: 31556952000,
+  autoRemove: "native",
+});
+
+app.use(
+  session({
+    name:"photoprofile.sid",
+    secret:process.env.SESSION_SECRET,
+    resave:false,
+    saveUninitialized:true,
+    store,
+    cookie:{
+      secure:false,
+      httpOnly:true,
+      maxAge:31556952000,
+    }
+
+}))
 
 require("dotenv").config()
-const cors = require("cors")
 app.use(express.json())
 app.use(morgan("short"))
 app.use(cors({

@@ -24,11 +24,12 @@ class AuthController{
         try {
             const userExist= await UserService.ifEmailExist(email) 
             if(!userExist){
-                throw Error("Invalid Email")
+                throw Error("Invalid Credentails")
             }
             const isValid = await UserService.isPasswordCorrect(userExist._doc.password,password)
             if(isValid){
                 const {password,...others} = userExist._doc
+                req.session.user=others;
                 return res.status(200).json({message:others,success:true})
             }else{
                 throw Error("Invalid credentials");
@@ -38,6 +39,16 @@ class AuthController{
                 
         }
 
+    }
+
+    async getLoggedinUser(req,res){
+        if(req.session?.user){
+            return res.status(200).json({message:req.session.user,success:true})
+
+
+        }else{
+            return res.status(500).json({message:"user is not logged in",success:false})
+        }
     }
 }
 module.exports = new AuthController();

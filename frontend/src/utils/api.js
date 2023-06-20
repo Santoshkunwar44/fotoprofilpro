@@ -8,7 +8,8 @@ const MjAxiosInstance =   axios.create({
     }
 })
 const axiosInstance = axios.create({
-    baseURL:process.env.REACT_APP_BACKEND_URL
+    baseURL:process.env.REACT_APP_BACKEND_URL,
+    withCredentials:true
 })
 
 export const mjImagineApi = (data)=> MjAxiosInstance.post(`https://api.thenextleg.io/v2/imagine`,data)
@@ -29,3 +30,10 @@ export const GetImagesOfUser=(userId)=>axiosInstance.get(`/image/${userId}`)
 
 
 
+// user api
+
+export const loginApi=(data)=>axiosInstance.post("/auth/login",data)
+
+export const registerApi=(data)=>axiosInstance.post("/auth/register",data)
+
+export const loggedInUserApi=()=>axiosInstance.get("/auth/loggedinUser")

@@ -5,7 +5,7 @@ import SignUpModal from "../../modal/Modal";
 const Navbar = () => {
 
   const {data:loggedInUser}  = useSelector(state=>state.user )
-  
+ 
 
 
 
@@ -23,8 +23,8 @@ const Navbar = () => {
             <img className={styles.logged_user_img} src="/images/boy1.png" alt="boy1" />
             <div>
 
-            <h4 className={styles.loggedInusername}>Rajiv Shrestha</h4>
-            <p>rajivNewar123@gmail.com</p>
+            <h4 className={styles.loggedInusername}>{loggedInUser?.username}</h4>
+            <p>{loggedInUser?.email}</p>
             </div>
         </div> :<button className={styles.signInBtn}>
 
