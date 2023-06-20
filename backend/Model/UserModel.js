@@ -13,7 +13,6 @@ const UserSchema = mongoose.Schema({
         unique:true,
         required:true,
     },
-    stripeCustomerId:String,
     password:String,
 },{
     timestamps:true

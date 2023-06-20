@@ -27,6 +27,48 @@ class ImageService{
         this.setImgPrompt = setImgPrompt
         this.setMjProgress=setMjProgress
     };
+    static async getCollectionImage(messageId){
+        try {
+                const res = await getMjResponseApi(messageId)
+                if(res.status===200){
+                    const {data:{response:{imageUrl,buttons  ,buttonMessageId},progress}}  = res;
+                    if(progress===100){
+                        return {imageUrl ,buttons ,buttonId:buttonMessageId}
+                    }else{
+                        return {}
+                    }
+                }else{
+                    throw Error("something went wrong")
+                }
+        } catch (error) {
+                console.log("something went wrong")
+        }
+    }
+
+    static async getUpscaleImage(buttonId,button ,cb){
+        try {
+                const {data,status} = await MjUpscaleApi({
+                    buttonMessageId:buttonId,
+                    button
+                })
+                if(status===200){
+                    const {messageId} = data;
+                   let intervalId =  setInterval(async()=>{
+                        const {imageUrl}= await this.getCollectionImage(messageId)
+                        if(imageUrl){
+                            console.log("the image",imageUrl)
+                            cb({
+                                imageUrl,
+                                button
+                            })
+                            clearInterval(intervalId)
+                        }
+                    },1000)
+                }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     async uploadImageToCloudinary(file){
     const formData = new FormData()

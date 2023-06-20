@@ -13,6 +13,7 @@ const ImageSchema = mongoose.Schema({
     collectionImg:String,
     images:Array,
     buttons:Array,
+    buttonId:String,
 },{
     timestamps:true
 })
