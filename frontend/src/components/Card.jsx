@@ -12,7 +12,7 @@ import {
 import Upload from "./upload/Upload";
 import {BsFillCloudCheckFill} from "react-icons/bs"
 import {ImCloudUpload} from "react-icons/im"
-import {useDispatch } from "react-redux"
+import {useDispatch, useSelector } from "react-redux"
 import {bindActionCreators} from "redux"
 import File from "./file/File";
 import { actionCreators } from "../redux/store";
@@ -26,6 +26,7 @@ const Card = () => {
   const [imgPrompt,setImgPrompt] =useState("")
   const {AddCollectionUrl,AddMJImages  ,StartFetching,StopFetching ,setMjProgress} = bindActionCreators( actionCreators,dispatch);
   const [file,setFile] =useState(null)
+  const {data:user} = useSelector(state=>state.user)
   const uploadConfig=useRef({
     messageId:null,
     buttonMessageId:null, 
@@ -46,6 +47,7 @@ const Card = () => {
     AddMJImages,
     AddCollectionUrl,
     setMjProgress,
+    user
   });
 
 const handleFileChange =async(event)=>{

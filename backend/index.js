@@ -43,7 +43,8 @@ app.use(
     saveUninitialized:true,
     store,
     cookie:{
-      secure:false,
+      secure:true,
+      sameSite:"none",
       httpOnly:true,
       maxAge:31556952000,
     }
@@ -54,7 +55,7 @@ require("dotenv").config()
 app.use(express.json())
 app.use(morgan("short"))
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin:"*",
     methods:['POST','GET','PUT','DELETE'],
     credentials:true
 }))
