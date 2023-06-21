@@ -24,6 +24,7 @@
     letter-spacing: 1px;
 
 }
+
 .waiting_img_{
     margin: auto;
     width: 50% !important;
@@ -33,6 +34,7 @@
     animation: waiting_upload 1s infinite alternate-reverse ease-in-out;
 
 }
+
 
 @keyframes waiting_upload {
 

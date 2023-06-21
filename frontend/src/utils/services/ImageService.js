@@ -55,16 +55,18 @@ class ImageService{
 
 
     async createImagine(){
+      const textPrompt = `${this.imgPrompt} ultra realistic mixed colorful `
         try {   
-                // this.StartFetching()
+              
+
                 const {data,status} = await mjImagineApi({
-                    msg:`${this.imgPrompt} ultra realistic professional ${this.user?.email}`
+                    msg:textPrompt
                 });
                 if(status===200){
                     const {messageId} = data;
                     await AddImageInDb({
                         owner:this.user?._id,
-                        content:`${this.imgPrompt} ultra realistic professional ${this.user?.email}`,
+                        content:textPrompt,
                         messageId ,
                         promtImg:this.imgPrompt
                     })

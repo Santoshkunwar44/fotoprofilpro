@@ -53,3 +53,19 @@ export const addActiveMessageIdAction=(payload)=>(dispatch)=>{
         payload
     })
 }
+
+export const addUnseenMessageCountAction=(payload)=>(dispatch)=>{
+    
+    dispatch({
+        type:ActionTypes.ADD_UNSEEN_COUNT,
+        payload
+    })
+}
+
+export const addActiveImageAction=(payload)=>(dispatch)=>{
+    
+    dispatch({
+        type:ActionTypes.ADD_ACTIVE_IMAGE,
+        payload
+    })
+}

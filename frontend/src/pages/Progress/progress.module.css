@@ -1,0 +1,142 @@
+.progress_page{
+    max-width: 1024px;
+    width: 100%;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    height: 100%;
+    padding-top: 4rem;
+}
+.progress_box{
+    width: 80%;
+    border: 2px dashed var(--btn_bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 20px;
+}
+.progress_text{
+    width: 70%;
+    color: rgb(201,201,201);
+    letter-spacing: 1px;
+    line-height: 25px;
+    font-size: 13px;
+    text-align: center;
+}
+.circular_progress{
+    animation:rotateImg 2s infinite alternate-reverse ease-in-out;
+    
+}
+.waiting_img_{
+    animation: waiting_upload 1s infinite alternate-reverse ease-in-out;
+    margin: auto;
+    width: 50% !important;
+    transition: all 1s;
+}
+
+/* prompt box */
+.image_info_section{
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+.prompt_box ,.additional_info{
+    display: flex;
+    justify-content: space-between;
+        background-color: rgba(118, 114, 114, 0.087);
+        backdrop-filter: blur(22px);
+        width: 50%  ;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    .prompt_box{
+
+        height: fit-content;
+    }
+.prompt_image_wrapper{
+
+width: 140px;
+height: 140px;
+
+
+
+}
+.prompt_img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+.prompt_info_list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    letter-spacing: 0.9px;
+}
+
+/* additional images box */
+.additional_info{
+    gap: 4px;
+}
+/* image boxes */
+
+
+.collection_img_box{
+    flex: 1;
+    display: grid;
+    place-items: center;
+    border:2px dashed var(--btn_bg);
+    border-radius: 10px;
+}
+.each_images_box_container{
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px    ;
+    
+}
+.each_image{
+    display: grid;
+    place-items: center;
+    border: 2px dashed var(--btn_bg);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.img_icon{
+    /* color: gray; */
+    fill: gray;
+}
+.collection_img_small{
+    width: 100%;
+    height: 100%;
+    
+}
+@keyframes rotateImg {
+
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: translateY(360deg);
+    }
+    
+}
+
+@keyframes waiting_upload {
+
+    0%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+    
+}
+
+

@@ -1,7 +1,11 @@
 
 .accordian_item{
     border: none !important;
-    background-color: rgba(118, 114, 114, 0.087);
+     background-color: rgba(118, 114, 114, 0.087);
+     background: #1f1d3a;
+ 
+
+
     border-bottom: 1px solid rgba(38, 34, 104, 0.694);
 }
 .accordian_box{
@@ -30,23 +34,23 @@
 .history_upload_item{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     
 }
 .history_upload_item p:nth-of-type(1){
-    color: gray;
+    color:  rgb(201, 201, 201);
     text-transform: capitalize;
-    font-size: 12px;
+    font-size: 14px;
 }
 .history_upload_item p:nth-of-type(2){
-    color: gray;
-    font-size: 12px;
+    font-size: 14px;
+      color:  rgb(201, 201, 201);
     text-transform: capitalize;
 
 }
 .createdAtTime{
-    color: gray;
-    font-size: 11px;
+  color:  rgb(201, 201, 201);    font-size: 11px;
+
 }
 
 .image_wrapper{
@@ -110,4 +114,17 @@ padding-left: 1rem;
     letter-spacing: 1px;
     background-color: #302b68ba;
 
+}
+.view_more_btn{
+    background-color: var(--btn_bg);
+    height:40px ;
+    padding: 0 10px;
+    border-radius: 4px;
+
+    letter-spacing: 1px;
+}
+.upload_item_right_box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

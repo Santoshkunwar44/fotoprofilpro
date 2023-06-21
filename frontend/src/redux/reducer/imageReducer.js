@@ -6,6 +6,8 @@ const INITIAL_STATE ={
     imageArr:[],
     MjProgress:null,
     activeMessageId:null,
+    unseenImagesCount:0,
+    activeImage:null,
     
 }
 export const imageReducer=(state=INITIAL_STATE,action)=>{
@@ -25,6 +27,13 @@ export const imageReducer=(state=INITIAL_STATE,action)=>{
             return {...state,isFetching:false }
         case ActionTypes.ADD_ACTIVE_MESSAGE_ID:
             return {...state,activeMessageId:action.payload}
+        
+        case ActionTypes.ADD_UNSEEN_COUNT:
+            return {...state,unseenImagesCount:action.payload}
+        
+        case ActionTypes.ADD_ACTIVE_IMAGE:
+            return {...state,activeImage:action.payload}
+        
     
         default:
             return state

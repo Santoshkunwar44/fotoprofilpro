@@ -1,4 +1,5 @@
 import axios  from "axios"
+import { useId } from "react";
 
 
 
@@ -7,7 +8,7 @@ const MjAxiosInstance =   axios.create({
         "Authorization":`Bearer ${process.env.REACT_APP_THENEXTLEG_TOKEN}`
     }
 })
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     baseURL:process.env.REACT_APP_BACKEND_URL,
     withCredentials:true
 })
@@ -29,8 +30,9 @@ export const GetCompletedImagesOfUserApi=(userId)=>axiosInstance.get(`/image/${u
 
 export const GetProcessingImagesOfUserApi=(userId)=>axiosInstance.get(`/image/${userId}?completed=false`)
 
+export const getCountUnseenImagesApi=(userId)=>axiosInstance.get(`/image/countUnseenImages/${userId}`)
 
-
+export const setUnseenImageToSeenApi=(owner)=>axiosInstance.put(`/image/setUnseenToseen/${owner}`)
 // user api
 
 export const loginApi=(data)=>axiosInstance.post("/auth/login",data)

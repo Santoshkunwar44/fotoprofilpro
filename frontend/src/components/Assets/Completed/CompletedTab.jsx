@@ -17,29 +17,9 @@ import { Accordion } from '@chakra-ui/react'
 
 
 
-export const CompletedTab = () => {
+export const CompletedTab = ({completedRequest}) => {
+  
 
-  const { data: user } = useSelector(state => state.user)
-  const [completedRequest, setCompletedRequest] = useState(null)
-
-  useEffect(() => {
-    if (!user) return;
-    fetchCompletedRequest()
-  }, [user])
-
-
-  const fetchCompletedRequest = async () => {
-    try {
-      const { data, status } = await GetCompletedImagesOfUserApi(user?._id);
-      if (status === 200) {
-        setCompletedRequest(data.message)
-      } else {
-        throw Error("something went wrong")
-      }
-    } catch (error) {
-      console.log("something went wrong");
-    }
-  }
 
 
 
@@ -48,16 +28,18 @@ export const CompletedTab = () => {
     <div className={styles.assets_tab}>
 
   
-        <Accordion allowToggle>
+        <div className={styles.item_container}>
   
      
 
 
       {
-        completedRequest && completedRequest.map(item=><UploadItem image={item} key={item?._id}/>)
+        completedRequest && completedRequest.map(item=><UploadItem
+           image={item}
+            key={item?._id}/>)
       }
 
-      </Accordion> 
+      </div> 
 
     </div>
   )

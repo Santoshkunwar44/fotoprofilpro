@@ -4,3 +4,8 @@
     flex-direction: column;
     gap: 1rem;
 }
+.item_container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

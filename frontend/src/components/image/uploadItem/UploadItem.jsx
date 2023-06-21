@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from "./upload.module.css"
-import {AccordionButton,AccordionIcon,AccordionItem,AccordionPanel, Box} from "@chakra-ui/react"
+import { Box} from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 import { ImageService } from "../../../utils/services/ImageService"
 const UploadItem = ({image}) => {
 
@@ -39,9 +40,9 @@ const UploadItem = ({image}) => {
     }
 
   return (
-    <AccordionItem className={styles.accordian_item}> 
+    <div  className={styles.accordian_item}> 
     <h2>
-      <AccordionButton>
+      
         <Box   className={styles.accordian_box}  flex='1' textAlign='left'>
         <div className={styles.history_main_info}>
         <img className={styles.my_upload_img} src={image.promtImg} alt="myupload" />
@@ -61,39 +62,20 @@ const UploadItem = ({image}) => {
   </div>
     </div>            
             </div>
-         <p className={styles.createdAtTime}>{uploadImage?.createdAt}</p>
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-    </h2>
-    <AccordionPanel className={styles.info_pannel} pb={4}>
-        <div className={styles.image_wrapper}>
-        <div className={styles.collectin_image_wrapper}>
-  
-        <img src={ uploadImage?.collectionImg} alt="collectionimg" />
-        </div>
-        <div className={styles.upscale_images}>
-          {
-            uploadImage?.images.map((img,index)=>(
-              <img src={img.imageUrl} alt="collectionimg" key={index} />  
-            ))
-          }
-        </div>
-        </div>
-        <div className={styles.button_container}>
-            <h3 className={styles.press_button_text}>Press button to get image  you like  </h3>
-            <div className={styles._button_box}>
-                {
-                    uploadImage?.buttons?.map((btn,_index)=>(
-                        <button onClick={()=>getUpscaleImage(btn)}>  Image {_index+1}</button>
-                    ))
-                }
+            <div className={styles.upload_item_right_box}>
 
+         <p className={styles.createdAtTime}>{uploadImage?.createdAt}</p>
+        <Link to={`/assets/${uploadImage?.messageId}`}>
+        
+         <button className={styles.view_more_btn}>VIEW MORE </button>
+        </Link>
             </div>
-        </div>
-  
-    </AccordionPanel>
-  </AccordionItem>
+        </Box>
+        
+    
+    </h2>
+
+  </div>
   
   )
 }

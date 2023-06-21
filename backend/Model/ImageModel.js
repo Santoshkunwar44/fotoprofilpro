@@ -21,6 +21,11 @@ const ImageSchema = mongoose.Schema({
         default:false,
 
     },
+    seen:{
+        type:Boolean,
+        default:false,
+    },
+    btnMessageIds:[],
     buttonId:String,
 },{
     timestamps:true

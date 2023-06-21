@@ -5,34 +5,14 @@ import Home from "./pages/Home/Home";
 import {Route,Routes} from "react-router-dom"
 import Workspace from "./pages/workSpace/Workspace";
 import { History } from "./pages/history/History";
-import { useEffect } from "react";
-import { loggedInUserApi } from "./utils/api";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "./redux/store";
-import useAlert from "./hooks/useAlert";
+import useSetup from "./hooks/useSetup";
 import useSocket from "./hooks/useSocket";
+import Progress from "./pages/Progress/Progress";
+
 function App() {
 
-  const dispatch = useDispatch()
-  const {addUserAction} = bindActionCreators(actionCreators,dispatch )
-  const socket = useSocket();
-
-  useEffect(()=>{
-    fetchLoggedInUser()
-  },[])
-
-  const fetchLoggedInUser=async()=>{
-    try {
-         const res = await loggedInUserApi();
-         if(res.status===200){
-          addUserAction(res.data.message)
-         }
-
-    } catch (error) {
-        console.log(error)
-    }
-  }
+ const setup = useSetup();
+ const socket =useSocket() 
   return (
     <>
       <div className="App">
@@ -40,8 +20,8 @@ function App() {
        <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/create" element={<Create/>}/>
-        <Route path="/workspace" element={<Workspace/>}
-         />
+        <Route path="/workspace" element={<Workspace/>}/>
+         <Route path="/assets/:messageId" element={<Progress/>}/>
          <Route  path="/assets" element={<History/>}/>
        </Routes>
       </div>

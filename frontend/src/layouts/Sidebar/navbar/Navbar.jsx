@@ -3,10 +3,11 @@ import styles from "./navbar.module.css";
 import {useSelector} from "react-redux"
 import SignUpModal from "../../modal/Modal";
 import LogoutPopover from "../../popover/LogoutPopover";
+import {IoMdNotificationsOutline} from "react-icons/io"
 const Navbar = () => {
 
   const {data:loggedInUser}  = useSelector(state=>state.user )
- 
+  const {unseenImagesCount} = useSelector(state=>state.image)
 
 
 
@@ -18,9 +19,37 @@ const Navbar = () => {
       <img  className={styles.logo_img} src="/images/logo.png" alt="logo" width={"100px"} />
 </Link>  
         </div>
-        {
 
-         loggedInUser ? <LogoutPopover>
+<ul  className={styles.nav_item}>
+    
+    <Link to={"/assets"}>
+     <li>My Assets  </li>
+    </Link>
+    <li>Pricing</li>
+    <li>Profile</li>
+    <Link  to={"/assets"}>
+    <li >Notification 
+    
+    
+   {
+
+
+   unseenImagesCount ?   <div className={styles.nav_notification}>  
+    <p>
+      
+       {unseenImagesCount}
+      
+      </p>
+        </div>:""
+   }
+
+    </li>
+    </Link>
+
+</ul>
+        {
+          
+          loggedInUser ? <LogoutPopover>
 
 
 
@@ -41,8 +70,8 @@ const Navbar = () => {
 
           </button>
           }
+           </div>
 
-    </div>
   )
 }
 
