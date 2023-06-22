@@ -68,7 +68,7 @@ try {
 }
 
 
-console.log(updatedImage)
+console.log(updatedImage,response)
 const {email,username} = updatedImage.owner;
 const {messageId} = updatedImage; 
 
