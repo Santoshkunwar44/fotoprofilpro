@@ -11,7 +11,8 @@ const session = require("express-session")
 const { Server } = require("socket.io");
 require("dotenv").config()
 app.use(cors({
-    origin:["*","http://localhost:3000"],
+    origin:["*","http://localhost:3000",process.env.FRONTEND_URL],
+
     methods:['POST','GET','PUT','DELETE'],
     credentials:true
 }))
@@ -49,10 +50,12 @@ app.use(
     saveUninitialized:true,
     store,
     cookie:{
-      secure:false,
+      secure:true,
+
     
       httpOnly:true,
       maxAge:31556952000,
+      sameSite:"none"
     }  
 
 }))    

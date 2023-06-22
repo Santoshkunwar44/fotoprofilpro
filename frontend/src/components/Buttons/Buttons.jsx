@@ -56,7 +56,13 @@ const Buttons = () => {
 
         {
             activeImage && activeImage.buttons.slice(0,4).map((btn,index)=>(
-                    <button  className={activeImage.btnMessageIds.find(img=>img.button===btn) ? styles.disable :""} onClick={()=>handleClickButton(btn)  }>IMAGE {index + 1}</button>
+                    <button  className={activeImage.btnMessageIds.find(img=>img.button===btn) ? styles.disable :""} onClick={()=>handleClickButton(btn)  }> 
+                {
+                    activeImage.btnMessageIds.find(img=>img.button===btn) ?     <img width="48" height="48" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1"/>   :  <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/40C057/loading.png" alt="loading"/>
+                }
+                    IMAGE {index + 1} 
+                    
+                    </button>
             ))
         }
 

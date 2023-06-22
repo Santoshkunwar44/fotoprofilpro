@@ -30,10 +30,13 @@ const useFetch=(endpoint,httpMethod)=>{
     }
 
 
+    const refetch=()=>{
+        fetchApi()
+    }
 
 
 
-    return {error,loading,data}
+    return {error,loading,data ,refetch}
 
 
 }

@@ -6,29 +6,38 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../redux/store";
 
 
-const useSocket=()=>{
+const useSocket=(activeMessageId,unseen)=>{
 
   const socketRef =useRef()
+  const activeIdRef =useRef()
+  const unseenMsgRef =useRef()
+
   const {open}=useAlert()
   const dispatch =useDispatch()
   const {data:loggedInUser} = useSelector(state=>state.user);
-  const { unseenImagesCount ,activeImage}= useSelector(state=>state.image)
 
-  const {addUnseenMessageCountAction, addActiveImageAction}= bindActionCreators(actionCreators,dispatch )
+  const {addUnseenMessageCountAction ,setRefreshAction}= bindActionCreators(actionCreators,dispatch )
   useEffect(()=>{
     return()=>{
-      
       socketRef.current.emit("leave",loggedInUser?.email)
     }
   },[])
 useEffect(()=>{
 
   if(!loggedInUser?.email)return;
-  socketRef.current =  io("http://localhost:8000")
+  socketRef.current =  io(process.env.REACT_APP_SOCKET_URL);
   socketRef.current.emit("join",loggedInUser?.email)
-  socketRef.current.on("response",(data)=>{
+  socketRef.current.on("response",handleSocketResponse)
+  
+},[loggedInUser?.email])
 
-    console.log("incoming",data?.messageId,activeImage)
+useEffect(()=>{
+  activeIdRef.current = activeMessageId
+  unseenMsgRef.current =unseen;
+},[activeMessageId,unseen])
+
+  const handleSocketResponse=(data)=>{
+  console.log("incoming",activeIdRef.current)
 
     
     if(data.type==="imagine"){
@@ -38,26 +47,14 @@ useEffect(()=>{
       open({text:"Image Fetched !!",type:"success"});
     }
 
-    if(data.messageId ===activeImage?.messageId){
-      delete data.type
-      addActiveImageAction(data)
-    }else{
-      addUnseenMessageCountAction(unseenImagesCount+1);
-    }
 
-
-
-
-      
+     if(activeIdRef.current===data.messageId){
+       setRefreshAction()
+     }else{
+       addUnseenMessageCountAction(unseenMsgRef.current+1);
+      }
     
-
-  
-
-    
-
-
-})
-},[loggedInUser?.email])
+  }
 
 }
 export default useSocket;

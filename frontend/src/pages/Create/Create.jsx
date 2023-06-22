@@ -8,7 +8,7 @@ const Create = () => {
     <div className={styles.create_page}>
 
         <Card/> 
-        <ImageContainer/>
+        {/* <ImageContainer/> */}
     </div>
   )
 }

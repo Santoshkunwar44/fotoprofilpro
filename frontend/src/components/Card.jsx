@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./card.css";
-import { useToast } from '@chakra-ui/react'
+import { Link, useToast } from '@chakra-ui/react'
 import {
   Accordion,
   AccordionItem,
@@ -11,11 +11,11 @@ import {
 } from '@chakra-ui/react'
 import Upload from "./upload/Upload";
 import {BsFillCloudCheckFill} from "react-icons/bs"
-import {ImCloudUpload} from "react-icons/im"
 import {useDispatch, useSelector } from "react-redux"
 import {bindActionCreators} from "redux"
 import File from "./file/File";
 import { actionCreators } from "../redux/store";
+import {useNavigate} from "react-router-dom"
 import { ImageService as ImageServiceClass } from "../utils/services/ImageService";
 
 const Card = () => {
@@ -25,7 +25,9 @@ const Card = () => {
   const dispatch = useDispatch()
   const [imgPrompt,setImgPrompt] =useState("")
   const {AddCollectionUrl,AddMJImages  ,StartFetching,StopFetching ,setMjProgress} = bindActionCreators( actionCreators,dispatch);
-  const [file,setFile] =useState(null)
+  const [file,setFile] =useState(null);
+  const [messageId,setMessageId] =useState(null)
+  const navigate =useNavigate()
   const {data:user} = useSelector(state=>state.user)
   const uploadConfig=useRef({
     messageId:null,
@@ -47,6 +49,7 @@ const Card = () => {
     AddMJImages,
     AddCollectionUrl,
     setMjProgress,
+    setMessageId,
     user
   });
 
@@ -58,7 +61,7 @@ const handleFileChange =async(event)=>{
 
 
 
-
+console.log(uploadConfig.current.messageId)
 
 
 
@@ -111,9 +114,13 @@ const handleFileChange =async(event)=>{
         }
 
       {
-
-       imgPrompt && <button className="create_variation_button" onClick={()=>ImageService.createImagine()}>GET IMAGE</button>
+   imgPrompt  &&  <button className="create_variation_button" onClick={()=>ImageService.createImagine()}>GET IMAGE</button>
       }
+      </div>
+      <div className="create_information_box">
+
+      <p>After you upload  your image . It may take a bit time  . So we whenever the image variations are ready to use , we will sent  you an email . or you can track the progress through my assets page .</p>
+      <button style={{pointerEvents:messageId?"auto":"none" ,opacity:messageId?1:0.7}} onClick={()=>navigate(`/assets/${messageId}`)}>Track progress</button>
       </div>
 
 </div>

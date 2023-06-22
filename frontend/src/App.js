@@ -8,11 +8,14 @@ import { History } from "./pages/history/History";
 import useSetup from "./hooks/useSetup";
 import useSocket from "./hooks/useSocket";
 import Progress from "./pages/Progress/Progress";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
-
+  const  {unseenImagesCount,activeMessageId} =useSelector(state=>state.image);
  const setup = useSetup();
- const socket =useSocket() 
+ const socket =useSocket(activeMessageId,unseenImagesCount) 
+
   return (
     <>
       <div className="App">

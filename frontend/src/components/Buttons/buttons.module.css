@@ -1,20 +1,26 @@
 .msg_btn_box{
 
  display: flex;
-    gap: 2rem;
+    gap: 1rem;
     padding-left: 1rem;
+    flex-wrap: wrap ;
     
 }
 .msg_btn_box button{
     padding: 0 10px;
     letter-spacing: 1px;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
     width: fit-content;
     height: 34px;
-    
     font-size: 12px ;
 
     background-color: var(--btn_bg);
+}
+.msg_btn_box button img{
+    width: 20px;
 }
 .disable{
     opacity: 0.6;

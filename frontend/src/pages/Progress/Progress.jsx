@@ -16,7 +16,7 @@ const Progress = () => {
   const dispatch = useDispatch()
 
   // const 
-  const {activeImage} = useSelector(state=>state.image)
+  const {activeImage ,refresh ,activeMessageId} = useSelector(state=>state.image)
   const [progressPercent,setProcessPercent  ] = useState(0);
   const [imageArr,setImgArr] = useState( [
   { button: "U1" },
@@ -25,19 +25,24 @@ const Progress = () => {
   { button: "U4" }
 ]
 )
-  const {addActiveImageAction}  = bindActionCreators(actionCreators,dispatch )
+console.log(activeMessageId)
+  const {addActiveImageAction ,addActiveMessageIdAction}  = bindActionCreators(actionCreators,dispatch )
 
   const intervalRef =useRef()
   
-  const {data,error,loading} =  useFetch(`/image/single/${messageId}`,"get");
-
+  const {data,error,loading ,refetch} =  useFetch(`/image/single/${messageId}`,"get");
 
   useEffect(()=>{
     return ()=>{
       addActiveImageAction(null)
+      addActiveMessageIdAction(null)
       
     }
   },[])
+
+  useEffect(()=>{
+    refetch()
+  },[refresh])
 
   useEffect(()=>{
     if(!messageId || !activeImage)return;
@@ -54,7 +59,8 @@ const Progress = () => {
 
   useEffect(()=>{
     if(data){
-      addActiveImageAction(data)
+      addActiveImageAction(data);
+      addActiveMessageIdAction(messageId)
     }
   },[data])
 
@@ -67,9 +73,17 @@ const Progress = () => {
 
 
   useEffect(()=>{
+    let imgARr  = [
+    
+       { button: "U1" },
+  { button: "U2" },
+  { button: "U3" },
+  { button: "U4" }
+      
+    ]
     if(activeImage){
 
-      imageArr.forEach(btn=>{
+      imgARr.forEach(btn=>{
         activeImage.images.forEach(img=>{
           if(btn.button=== img.button){
             btn.image= img.image
@@ -77,9 +91,10 @@ const Progress = () => {
         })
       })
 
+
+      setImgArr(imgARr)
     }
   },[activeImage])
-
 
   const fetchProgressCount=async(messageId)=>{
 
@@ -121,11 +136,11 @@ const Progress = () => {
               <div className={styles.prompt_info_list}>
 
                 <p>uploaded {format(activeImage?.createdAt)}</p>
-                <p>Message Id : {activeImage?.buttonId}</p>
+                <p>Message Id : {messageId}</p>
                 <p>Status : {activeImage?.completed ? "completed":"processing"}</p>
             
 
-              {activeImage?.completed === false ?  <p>completed : 34%</p> :""}
+              {activeImage?.completed === false ?  <p>completed : {progressPercent}%</p> :""}
               
 
               </div>

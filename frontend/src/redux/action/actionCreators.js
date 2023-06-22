@@ -69,3 +69,11 @@ export const addActiveImageAction=(payload)=>(dispatch)=>{
         payload
     })
 }
+
+export const setRefreshAction=()=>(dispatch)=>{
+    
+    dispatch({
+        type:ActionTypes.SET_REFRESH,
+        
+    })
+}

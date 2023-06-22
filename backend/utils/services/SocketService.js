@@ -51,6 +51,7 @@ class AppUser{
     async sendMjResponse(io,response){
        
        io.to(this.socketId).emit("response",response);
+       console.log("sending the socket message");
     }
 
 

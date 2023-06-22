@@ -16,6 +16,7 @@ class ImageService{
         setImgPrompt,
         setMjProgress,
         setUploadProgress,
+        setMessageId,
         user
     }){
         this.uploadConfig=uploadConfig;
@@ -27,7 +28,8 @@ class ImageService{
         this.StopFetching = StopFetching;
         this.setImgPrompt = setImgPrompt
         this.setMjProgress=setMjProgress;
-        this.user = user
+        this.user = user;
+        this.setMessageId = setMessageId
     };
    
 
@@ -70,6 +72,7 @@ class ImageService{
                         messageId ,
                         promtImg:this.imgPrompt
                     })
+                    this.setMessageId(messageId)
                     this.setImgPrompt("")
               }
         } catch (error) {

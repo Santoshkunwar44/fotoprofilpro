@@ -1,42 +1,46 @@
 import { ActionTypes } from "../action/ActionTypes";
 
-const INITIAL_STATE ={
-    collection_image:null,
-    isFetching:false,
-    imageArr:[],
-    MjProgress:null,
-    activeMessageId:null,
-    unseenImagesCount:0,
-    activeImage:null,
-    
+const INITIAL_STATE = {
+    collection_image: null,
+    isFetching: false,
+    imageArr: [],
+    MjProgress: null,
+    activeMessageId: null,
+    unseenImagesCount: 0,
+    activeImage: null,
+    refresh: false
+
 }
-export const imageReducer=(state=INITIAL_STATE,action)=>{
+export const imageReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case ActionTypes.SET_COLLECTION_IMAGE:
-                return {...state,collection_image:action.payload}
+            return { ...state, collection_image: action.payload }
 
         case ActionTypes.SET_IMAGE_ARR:
-            return {...state,imageArr:[...state.imageArr,action.payload]}
+            return { ...state, imageArr: [...state.imageArr, action.payload] }
 
         case ActionTypes.SET_MJ_PROGRESS:
-            return {...state,MjProgress:action.payload}
+            return { ...state, MjProgress: action.payload }
         case ActionTypes.START_FETCHING:
-            return {...state,isFetching:true }
+            return { ...state, isFetching: true }
         case ActionTypes.STOP_FETCHING:
-            return {...state,isFetching:false }
+            return { ...state, isFetching: false }
         case ActionTypes.ADD_ACTIVE_MESSAGE_ID:
-            return {...state,activeMessageId:action.payload}
-        
+            return { ...state, activeMessageId: action.payload }
+
         case ActionTypes.ADD_UNSEEN_COUNT:
-            return {...state,unseenImagesCount:action.payload}
-        
+            return { ...state, unseenImagesCount: action.payload }
+
         case ActionTypes.ADD_ACTIVE_IMAGE:
-            return {...state,activeImage:action.payload}
-        
-    
+            return { ...state, activeImage: action.payload }
+            
+        case ActionTypes.SET_REFRESH:
+            return { ...state, refresh: !state.refresh }
+
+
         default:
             return state
     }
-    
+
 }
