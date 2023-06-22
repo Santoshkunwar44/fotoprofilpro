@@ -18,10 +18,26 @@ const Progress = () => {
   // const 
   const {activeImage} = useSelector(state=>state.image)
   const [progressPercent,setProcessPercent  ] = useState(0);
+  const [imageArr,setImgArr] = useState( [
+  { button: "U1" },
+  { button: "U2" },
+  { button: "U3" },
+  { button: "U4" }
+]
+)
   const {addActiveImageAction}  = bindActionCreators(actionCreators,dispatch )
+
   const intervalRef =useRef()
+  
   const {data,error,loading} =  useFetch(`/image/single/${messageId}`,"get");
 
+
+  useEffect(()=>{
+    return ()=>{
+      addActiveImageAction(null)
+      
+    }
+  },[])
 
   useEffect(()=>{
     if(!messageId || !activeImage)return;
@@ -36,8 +52,6 @@ const Progress = () => {
 
   },[messageId,activeImage])
 
-
-
   useEffect(()=>{
     if(data){
       addActiveImageAction(data)
@@ -50,6 +64,21 @@ const Progress = () => {
       clearInterval(intervalRef.current)
     }
   },[progressPercent])
+
+
+  useEffect(()=>{
+    if(activeImage){
+
+      imageArr.forEach(btn=>{
+        activeImage.images.forEach(img=>{
+          if(btn.button=== img.button){
+            btn.image= img.image
+          }
+        })
+      })
+
+    }
+  },[activeImage])
 
 
   const fetchProgressCount=async(messageId)=>{
@@ -81,6 +110,9 @@ const Progress = () => {
         } 
         <div className={styles.image_info_section}>
 
+        <div className={styles.prompt_section}>
+
+
         <div className={styles.prompt_box}>
           <div className={styles.prompt_image_wrapper}>
 
@@ -95,6 +127,8 @@ const Progress = () => {
 
               </div>
         </div>
+        <Buttons/>
+        </div>
         <div className={styles.additional_info}>
 
           <div className={styles.collection_img_box}> 
@@ -104,25 +138,23 @@ const Progress = () => {
           }
           </div>
           <div className={styles.each_images_box_container}>
+            {
+              imageArr.map(img=>(
+
             <div className={styles.each_image}>
-              <BsImageAlt  className={styles.img_icon}/>
+              {
+                img.image ? <img src={img.image} alt="" />: 
+                <BsImageAlt  className={styles.img_icon}/>
+              }
             </div>
-                        <div className={styles.each_image}>
-                          <BsImageAlt  className={styles.img_icon}/>
-                        </div>
-                                    <div className={styles.each_image}>
-                                      <BsImageAlt  className={styles.img_icon}/>
-                                    </div>
-                                                <div className={styles.each_image}>
-
-                        <BsImageAlt  className={styles.img_icon}/>
-
-                                                </div>
+              ))
+            }
+           
           </div>
 
         </div>
         </div>
-        <Buttons/>
+        {/* <Buttons/> */}
     </div>
 
   )

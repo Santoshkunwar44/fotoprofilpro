@@ -33,6 +33,8 @@ export const GetProcessingImagesOfUserApi=(userId)=>axiosInstance.get(`/image/${
 export const getCountUnseenImagesApi=(userId)=>axiosInstance.get(`/image/countUnseenImages/${userId}`)
 
 export const setUnseenImageToSeenApi=(owner)=>axiosInstance.put(`/image/setUnseenToseen/${owner}`)
+
+export const addButtonMessageIdApi=(messageId,data)=>axiosInstance.put(`/image/addBtnMessageId/${messageId}`,data)
 // user api
 
 export const loginApi=(data)=>axiosInstance.post("/auth/login",data)

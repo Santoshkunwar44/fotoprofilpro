@@ -12,13 +12,12 @@ const useSocket=()=>{
   const {open}=useAlert()
   const dispatch =useDispatch()
   const {data:loggedInUser} = useSelector(state=>state.user);
-  const {activeMessageId , unseenImagesCount}= useSelector(state=>state.image)
+  const { unseenImagesCount ,activeImage}= useSelector(state=>state.image)
 
-  const {addUnseenMessageCountAction}= bindActionCreators(actionCreators,dispatch )
+  const {addUnseenMessageCountAction, addActiveImageAction}= bindActionCreators(actionCreators,dispatch )
   useEffect(()=>{
     return()=>{
       
-      console.log("unmounting")
       socketRef.current.emit("leave",loggedInUser?.email)
     }
   },[])
@@ -29,14 +28,21 @@ useEffect(()=>{
   socketRef.current.emit("join",loggedInUser?.email)
   socketRef.current.on("response",(data)=>{
 
-  if(data.messageId === activeMessageId){
+    console.log("incoming",data?.messageId,activeImage)
+  
 
-  }else{
-    open({text:"Your variation image is ready to use !!",type:"success"})
-    addUnseenMessageCountAction(unseenImagesCount+1);
-    console.log(unseenImagesCount,"i got response",data);
+    if(data.messageId===activeImage?.messageId){
+      addActiveImageAction(data)
+       open({text:"Image Fetched !!",type:"success"});
+    }else{
+      open({text:"Your variation image is ready to use !!",type:"success"})
 
-  }
+      
+      addUnseenMessageCountAction(unseenImagesCount+1);
+      console.log(unseenImagesCount,"i got response",data);
+    }
+
+  
 
     
 

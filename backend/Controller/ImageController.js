@@ -93,16 +93,17 @@ class ImageController{
     async AddBtnMessageId(req,res){
         
         const {messageId} = req.params;
-        const {btnId} = req.body;
+        const {btnId,button} = req.body;
   
             try {
 
 
-           const updatedImage  = await ImageModel.updateMany({
+           const updatedImage  = await ImageModel.findOneAndUpdate(
+            {
                     messageId,
             },
             {
-                $push:{btnMessageIds:btnId}               
+                $push:{btnMessageIds:{btnId,button}}               
             },
             {
                 new:true,

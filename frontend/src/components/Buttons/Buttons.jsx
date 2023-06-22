@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from "redux"
 import {useDispatch, useSelector}  from "react-redux"
 import { actionCreators } from '../../redux/store'
-import { MjUpscaleApi } from '../../utils/api'
+import { MjUpscaleApi, addButtonMessageIdApi } from '../../utils/api'
 import styles from "./buttons.module.css"
 
 
@@ -14,24 +14,36 @@ const Buttons = () => {
     const dispatch =useDispatch()
     const {addActiveImageAction} = bindActionCreators(actionCreators,dispatch);
 
+
     console.log(activeImage)
+
+    
 
 
     const handleClickButton=async(button)=>{
 
-        const {buttonId,btnMessageIds} =activeImage;
+        const {buttonId,btnMessageIds ,messageId} =activeImage;
+
 
             try {
                   const {data} =   await MjUpscaleApi({
                         buttonMessageId:buttonId,
                         button
-                    })
+                    });
+
+                    const newData={
+                        btnId:data.messageId,
+                        button
+                    }
+
+                    await addButtonMessageIdApi(messageId,newData)
+                    console.log("response messaged  id",data.messageId)
                     addActiveImageAction({
                         ...activeImage,
                         btnMessageIds:[
                             ...btnMessageIds,
-                            data.messageId
-                        ]
+                            newData]
+
                     })
             } catch (error) {
                 console.log(error)
@@ -44,7 +56,7 @@ const Buttons = () => {
 
         {
             activeImage && activeImage.buttons.slice(0,4).map((btn,index)=>(
-                    <button onClick={()=>handleClickButton(btn)}>IMAGE {index + 1}</button>
+                    <button  className={activeImage.images.find(img=>img.button===btn) ? styles.disable :""} onClick={()=>handleClickButton(btn)  }>IMAGE {index + 1}</button>
             ))
         }
 

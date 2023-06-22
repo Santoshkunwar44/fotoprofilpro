@@ -1,5 +1,22 @@
-.msg_btn_img{
-    display: flex;
+.msg_btn_box{
+
+ display: flex;
     gap: 2rem;
+    padding-left: 1rem;
     
+}
+.msg_btn_box button{
+    padding: 0 10px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    width: fit-content;
+    height: 34px;
+    
+    font-size: 12px ;
+
+    background-color: var(--btn_bg);
+}
+.disable{
+    opacity: 0.6;
+    pointer-events: none;
 }

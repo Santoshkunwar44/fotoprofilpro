@@ -40,6 +40,13 @@
 }
 
 /* prompt box */
+.prompt_section{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
 .image_info_section{
     display: flex;
     gap: 2rem;
@@ -55,7 +62,7 @@
         border-radius: 10px;
     }
     .prompt_box{
-
+        width: 100% !important;
         height: fit-content;
     }
 .prompt_image_wrapper{
@@ -107,6 +114,11 @@ height: 140px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+.each_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .img_icon{
     /* color: gray; */
