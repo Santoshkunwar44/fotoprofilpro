@@ -42,7 +42,7 @@ class EmailService {
       const html =   this.generateEmailHTML({
             heading:`Good News ${username}  your image is ready !   `,
             desc:`Image variation of  your below image is ready . Click the button below to view it .`,
-            url:`${process.env.FRONTEND_URL}/history/variation/${messageId}`
+            url:`${process.env.FRONTEND_URL}/assets/${messageId}`
         })
 
         this.Mail({ subject:"Image Variation has been  generated.",text:"Image Generated",html,email})

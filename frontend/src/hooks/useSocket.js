@@ -29,18 +29,27 @@ useEffect(()=>{
   socketRef.current.on("response",(data)=>{
 
     console.log("incoming",data?.messageId,activeImage)
-  
 
-    if(data.messageId===activeImage?.messageId){
-      addActiveImageAction(data)
-       open({text:"Image Fetched !!",type:"success"});
+    
+    if(data.type==="imagine"){
+      open({text:"Your variation image is ready to use !!",type:"success"});
+
     }else{
-      open({text:"Your variation image is ready to use !!",type:"success"})
+      open({text:"Image Fetched !!",type:"success"});
+    }
+
+    if(data.messageId ===activeImage?.messageId){
+      delete data.type
+      addActiveImageAction(data)
+    }else{
+      addUnseenMessageCountAction(unseenImagesCount+1);
+    }
+
+
+
 
       
-      addUnseenMessageCountAction(unseenImagesCount+1);
-      console.log(unseenImagesCount,"i got response",data);
-    }
+    
 
   
 

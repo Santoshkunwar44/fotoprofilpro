@@ -123,7 +123,10 @@ const Progress = () => {
                 <p>uploaded {format(activeImage?.createdAt)}</p>
                 <p>Message Id : {activeImage?.buttonId}</p>
                 <p>Status : {activeImage?.completed ? "completed":"processing"}</p>
-                <p>completed : 34%</p>
+            
+
+              {activeImage?.completed === false ?  <p>completed : 34%</p> :""}
+              
 
               </div>
         </div>

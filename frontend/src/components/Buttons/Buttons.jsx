@@ -56,7 +56,7 @@ const Buttons = () => {
 
         {
             activeImage && activeImage.buttons.slice(0,4).map((btn,index)=>(
-                    <button  className={activeImage.images.find(img=>img.button===btn) ? styles.disable :""} onClick={()=>handleClickButton(btn)  }>IMAGE {index + 1}</button>
+                    <button  className={activeImage.btnMessageIds.find(img=>img.button===btn) ? styles.disable :""} onClick={()=>handleClickButton(btn)  }>IMAGE {index + 1}</button>
             ))
         }
 

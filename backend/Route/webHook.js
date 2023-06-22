@@ -9,14 +9,18 @@ router.post("/response",async(req,res)=>{
 
 //  console.log(socketIns)
     const response =  req.body;
-    const {originatingMessageId,buttonMessageId,imageUrl,buttons} = response
+    const {originatingMessageId,buttonMessageId,imageUrl,buttons,content} = response
     let updatedImage ;
     // console.log(response)
 
+    if(content==="JOB_ACTION_RESTRICTED" || !imageUrl){
+        return    res.status(500).json({message:"something went wrong."})
+    }
+
+
 
 try {
-    
-    if(response.type==="imagine"){
+     if(response.type==="imagine"){
 
         
         updatedImage =  await ImageModel.findOneAndUpdate({
@@ -75,6 +79,7 @@ const {messageId} = updatedImage;
 const user = OnlineUsers.getUser(email)
 const io = req.app.get("io")
 
+updatedImage.type=response.type;
 if(user){
     await user.sendMjResponse(io,updatedImage);
 }
