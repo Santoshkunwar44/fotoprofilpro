@@ -10,24 +10,36 @@ const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const { Server } = require("socket.io");
 require("dotenv").config()
-app.use(cors({
-    origin:["*","http://localhost:3000",process.env.FRONTEND_URL],
-
-    methods:['POST','GET','PUT','DELETE'],
-    credentials:true
-}))
-
 const io = new Server(server, {
   cors: {
     origin: [
       process.env.FRONTEND_URL,
       "http://localhost:3000",
-      "http://127.0.0.1:3000",
     ],    
     methods: ["GET", "POST","PUT"],
     credentials: true,
   },    
 })    
+app.use(cors({
+    origin:["*","http://localhost:3000",process.env.FRONTEND_URL],
+    methods:['POST','GET','PUT','DELETE'],
+    credentials:true
+}))
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,PUT,POST,DELETE,UPDATE,OPTIONS"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+  );
+  next();
+});
+
+app.set("trust proxy", 1); // trust first proxy
 
 const EventEmiter = new Emitter();
 app.set("EventEmitter", EventEmiter);
