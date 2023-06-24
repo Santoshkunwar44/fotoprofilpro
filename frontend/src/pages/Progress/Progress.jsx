@@ -60,7 +60,7 @@ const Progress = () => {
 
 
   useEffect(()=>{
-    if(progressPercent===100 || activeImage.completed){
+    if(progressPercent===100 || activeImage?.completed){
       clearInterval(intervalRef.current)
     }
   },[progressPercent,activeImage])
