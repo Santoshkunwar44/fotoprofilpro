@@ -9,7 +9,7 @@ router.post("/response",async(req,res)=>{
 
 //  console.log(socketIns)
     const response =  req.body;
-    const {originatingMessageId,buttonMessageId,imageUrl,buttons,content} = response
+    const {originatingMessageId, imageUrls,buttonMessageId,imageUrl,buttons,content} = response
     let updatedImage ;
     // console.log(response)
 
@@ -28,6 +28,7 @@ try {
         },{
             collectionImg:imageUrl,
             buttonId:buttonMessageId,
+            imageUrls,
             buttons,
             completed:true
         },{
@@ -41,36 +42,7 @@ try {
    
    
    
-}else if(response.type==="button"){
-    
-    const {originatingMessageId,imageUrl} = response;
-    
-    
-    const image = await ImageModel.findOne({
-        "btnMessageIds.btnId":originatingMessageId
-    })
-    
-    const buttonName = image.btnMessageIds.find(btn=>btn.btnId === originatingMessageId)?.button
-    
-    updatedImage = await ImageModel.findByIdAndUpdate(image._id,{
-        $push:{images:{image:imageUrl,button:buttonName}}
-    },
-    {
-        new:true,
-        returnDocument:true, 
-        returnOriginal:false,
-    }).populate("owner")
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-
 
 console.log(updatedImage,response)
 const {email,username} = updatedImage.owner;

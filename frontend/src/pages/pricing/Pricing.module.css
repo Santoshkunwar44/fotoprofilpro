@@ -38,7 +38,7 @@ height:calc(80vh - 100px);
     }
 .plan_name{
     font-weight: bold   ;
-    font-size: 19px;
+    font-size: 25px;
     letter-spacing: 1px;
 
 }
@@ -47,6 +47,7 @@ height:calc(80vh - 100px);
     padding: 0 10px;
     height: 40px;
     margin: auto;
-    
+   border-radius: 5px; 
+   letter-spacing:1px;
 
 }

@@ -18,7 +18,7 @@ const Pricing = () => {
             <li>Get email when image generated</li>
             <li>Generate 45 images</li>
             </ul>
-                          <button className={styles.buy_plan_button}> 40 IDR BUY </button>
+                          <button className={styles.buy_plan_button}>  BUY NOW</button>
             
         </div>
 
@@ -32,7 +32,7 @@ const Pricing = () => {
             <li>Get email when image generated</li>
             <li>Generate 90 images</li>
             </ul>
-                <button className={styles.buy_plan_button}> 90 IDR BUY </button>
+                <button className={styles.buy_plan_button}> BUY NOW</button>
             
         </div>
     </div>

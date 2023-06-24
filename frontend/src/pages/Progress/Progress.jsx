@@ -18,14 +18,9 @@ const Progress = () => {
   // const 
   const {activeImage ,refresh ,activeMessageId} = useSelector(state=>state.image)
   const [progressPercent,setProcessPercent  ] = useState(0);
-  const [imageArr,setImgArr] = useState( [
-  { button: "U1" },
-  { button: "U2" },
-  { button: "U3" },
-  { button: "U4" }
-]
-)
-console.log(activeMessageId)
+
+
+
   const {addActiveImageAction ,addActiveMessageIdAction}  = bindActionCreators(actionCreators,dispatch )
 
   const intervalRef =useRef()
@@ -47,10 +42,9 @@ console.log(activeMessageId)
   useEffect(()=>{
     if(!messageId || !activeImage)return;
 
-
     if(activeImage.completed)return;
 
-    fetchProgressCount(messageId)
+
    intervalRef.current =   setInterval(()=>(
       fetchProgressCount(messageId)
     ),5000)
@@ -62,39 +56,17 @@ console.log(activeMessageId)
       addActiveImageAction(data);
       addActiveMessageIdAction(messageId)
     }
-  },[data])
+  },[data,messageId])
 
 
   useEffect(()=>{
-    if(progressPercent===100){
+    if(progressPercent===100 || activeImage.completed){
       clearInterval(intervalRef.current)
     }
-  },[progressPercent])
+  },[progressPercent,activeImage])
 
 
-  useEffect(()=>{
-    let imgARr  = [
-    
-       { button: "U1" },
-  { button: "U2" },
-  { button: "U3" },
-  { button: "U4" }
-      
-    ]
-    if(activeImage){
 
-      imgARr.forEach(btn=>{
-        activeImage.images.forEach(img=>{
-          if(btn.button=== img.button){
-            btn.image= img.image
-          }
-        })
-      })
-
-
-      setImgArr(imgARr)
-    }
-  },[activeImage])
 
   const fetchProgressCount=async(messageId)=>{
 
@@ -145,7 +117,7 @@ console.log(activeMessageId)
 
               </div>
         </div>
-        <Buttons/>
+        {/* <Buttons/> */}
         </div>
         <div className={styles.additional_info}>
 
@@ -157,15 +129,15 @@ console.log(activeMessageId)
           </div>
           <div className={styles.each_images_box_container}>
             {
-              imageArr.map(img=>(
+         activeImage&&   activeImage?.imageUrls?.length >0 ?  activeImage.imageUrls?.map(img=>(
 
             <div className={styles.each_image}>
-              {
-                img.image ? <img src={img.image} alt="" />: 
-                <BsImageAlt  className={styles.img_icon}/>
-              }
+                <img src={img} alt="image variations" />
             </div>
-              ))
+              )) : Array.from(4).fill(0).map(item=> <div className={styles.each_image}>
+                <BsImageAlt  className={styles.img_icon}/>
+            </div>
+            )
             }
            
           </div>
