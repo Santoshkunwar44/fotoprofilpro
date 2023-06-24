@@ -10,11 +10,12 @@ import useSocket from "./hooks/useSocket";
 import Progress from "./pages/Progress/Progress";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Pricing from "./pages/pricing/Pricing";
 
 function App() {
   const  {unseenImagesCount,activeMessageId} =useSelector(state=>state.image);
- const setup = useSetup();
- const socket =useSocket(activeMessageId,unseenImagesCount) 
+useSetup();
+useSocket(activeMessageId,unseenImagesCount) 
 
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/workspace" element={<Workspace/>}/>
          <Route path="/assets/:messageId" element={<Progress/>}/>
          <Route  path="/assets" element={<History/>}/>
+         <Route  path="/pricing" element={<Pricing/>}/>
        </Routes>
       </div>
     </>
