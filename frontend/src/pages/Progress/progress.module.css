@@ -62,7 +62,7 @@
         border-radius: 10px;
     }
     .prompt_box{
-        width: 100% !important;
+        /* width: 100% !important; */
         height: fit-content;
     }
 .prompt_image_wrapper{
