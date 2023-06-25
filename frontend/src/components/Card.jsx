@@ -114,13 +114,16 @@ console.log(uploadConfig.current.messageId)
         }
 
       {
-   imgPrompt  &&  <button className="create_variation_button" onClick={()=>ImageService.createImagine()}>GET IMAGE</button>
+   imgPrompt  &&  <button className="create_variation_button" onClick={()=>ImageService.createImagine()}> GET IMAGE VARIATION </button>
       }
       </div>
       <div className="create_information_box">
 
       <p>After you upload  your image . It may take a bit time  . So we whenever the image variations are ready to use , we will sent  you an email . or you can track the progress through my assets page .</p>
-      <button style={{pointerEvents:messageId?"auto":"none" ,opacity:messageId?1:0.7}} onClick={()=>navigate(`/assets/${messageId}`)}>Track progress</button>
+     {
+
+messageId &&       <button  onClick={()=>navigate(`/assets/${messageId}`)}>Track progress</button>
+      }
       </div>
 
 </div>
