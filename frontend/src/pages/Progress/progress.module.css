@@ -63,7 +63,12 @@
     }
     .prompt_box{
         /* width: 100% !important; */
+        background-color: rgba(118, 114, 114, 0.087);;
         height: fit-content;
+        transition: all .3s ease-in-out;
+    }
+    .prompt_box:hover{
+        scale: 1.04;
     }
 .prompt_image_wrapper{
 

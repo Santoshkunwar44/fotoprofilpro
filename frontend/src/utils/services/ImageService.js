@@ -74,7 +74,7 @@ class ImageService{
                         owner:this.user?._id,
                         content:textPrompt,
                         messageId ,
-                        type:"imagine",
+                        type:"variation",
                         promtImg:this.imgPrompt
                     })
                     this.setMessageId(messageId)

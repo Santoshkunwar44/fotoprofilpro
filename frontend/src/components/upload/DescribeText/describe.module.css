@@ -1,0 +1,19 @@
+.describe_box{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.describe_box li{
+    color: #9f9f9f;
+    font-size: 13px;
+    list-style: none;
+    background-color: rgba(118, 114, 114, 0.087);;
+    padding: 2rem 1rem;
+    line-height: 25px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.describe_box li:hover{
+    scale: 1.04;
+
+}
