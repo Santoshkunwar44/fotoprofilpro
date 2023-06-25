@@ -13,7 +13,7 @@ router.post("/response",async(req,res)=>{
     let updatedImage ;
     // console.log(response)
 
-    if(content==="JOB_ACTION_RESTRICTED" || !imageUrl){
+    if(content==="JOB_ACTION_RESTRICTED" ){
         return    res.status(500).json({message:"something went wrong."})
     }
 
