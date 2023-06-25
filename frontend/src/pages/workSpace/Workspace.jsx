@@ -47,6 +47,24 @@ const Workspace = () => {
                 <button >UPLOAD</button>
                 </Link>
             </motion.div>
+                <motion.div 
+                    initial={"close"}
+                    animate={"open"}
+                    variants={variants}
+                    transition={{
+                      duration:2,
+                      type:"spring",
+                      stiffness:400,
+                      delay:0.2
+                    }}
+             className={styles.workItem}>
+
+                <img src="/images/explore.png" alt="girl painting in the wall" />
+                <p  className={styles.work_desc}>Let Artificial Intelligence describle your image .</p>
+                <Link to="/describe">
+                <button >DESCRIBE</button>
+                </Link>
+            </motion.div>
 
         </div>
     </div>

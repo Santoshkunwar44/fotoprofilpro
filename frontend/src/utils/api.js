@@ -18,7 +18,7 @@ export const getMjResponseApi =(messagId) => MjAxiosInstance.get(`https://api.th
 
 export const MjUpscaleApi=(data)=>MjAxiosInstance.post(`https://api.thenextleg.io/v2/button`,data)
 
-
+export const MjDescribeApi=(data)=>MjAxiosInstance.post(`https://api.thenextleg.io/v2/describe`,data);
 
 //add images in db 
 
@@ -36,6 +36,7 @@ export const setUnseenImageToSeenApi=(owner)=>axiosInstance.put(`/image/setUnsee
 export const addButtonMessageIdApi=(messageId,data)=>axiosInstance.put(`/image/addBtnMessageId/${messageId}`,data)
 
 export const setUnseenToSingleImageApi=(owner,imageId)=>axiosInstance.put(`/image/setUnseenToseen/${owner}?imageId=${imageId}`)
+
 
 // user api
 

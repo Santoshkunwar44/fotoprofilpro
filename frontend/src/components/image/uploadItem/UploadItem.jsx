@@ -56,9 +56,10 @@ const UploadItem = ({image}) => {
   <p>Message Id</p>
   <p>{uploadImage?.messageId}</p>
   </div>
+  
   <div className={styles.history_upload_item_info}>
-    <p>Fetched variations</p>
-    <p>{uploadImage?.images ?  uploadImage?.images.length :0  }/4</p>
+    <p>Service type</p>
+    <p>{uploadImage?.type==="describe"?"describe":"variations"}</p>
   </div>
     </div>            
             </div>

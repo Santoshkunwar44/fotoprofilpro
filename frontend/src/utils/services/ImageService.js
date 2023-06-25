@@ -1,5 +1,5 @@
 import axios from "axios"
-import { AddImageInDb, mjImagineApi } from "../api";
+import { AddImageInDb, MjDescribeApi, mjImagineApi } from "../api";
 
 
 const cloudName ="onlinecoder"
@@ -18,7 +18,8 @@ class ImageService{
         setMjProgress,
         setUploadProgress,
         setMessageId,
-        user
+        user,
+        type
     }){
         this.uploadConfig=uploadConfig;
         this.AddCollectionUrl=AddCollectionUrl;
@@ -31,7 +32,8 @@ class ImageService{
         this.setImgPrompt = setImgPrompt
         this.setMjProgress=setMjProgress;
         this.user = user;
-        this.setMessageId = setMessageId
+        this.setMessageId = setMessageId;
+        this.type= type;
     };
    
 
@@ -72,6 +74,7 @@ class ImageService{
                         owner:this.user?._id,
                         content:textPrompt,
                         messageId ,
+                        type:"imagine",
                         promtImg:this.imgPrompt
                     })
                     this.setMessageId(messageId)
@@ -85,6 +88,31 @@ class ImageService{
     }
 
 
+    async createDescribe(){
+         try {   
+
+            this.setCreatingImagine(true);
+                const {data,status} = await MjDescribeApi({
+                    url:this.imgPrompt
+                });
+                if(status===200){
+                    const {messageId} = data;
+                    await AddImageInDb({
+                        owner:this.user?._id,
+                        messageId ,
+                        type:"describe",
+                        promtImg:this.imgPrompt
+                    })
+                    this.setMessageId(messageId)
+                    this.setCreatingImagine(false)
+                    this.setImgPrompt("")
+              }
+        } catch (error) {
+          this.setCreatingImagine(false)
+            console.log(error)
+        }
+
+    }
 
 
    

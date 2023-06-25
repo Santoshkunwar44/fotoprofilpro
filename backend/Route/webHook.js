@@ -42,6 +42,20 @@ try {
    
    
    
+}else if(response.type==="describe"){
+
+        
+        updatedImage =  await ImageModel.findOneAndUpdate({
+            messageId:originatingMessageId
+        },{
+           completed:true,
+           description:content,
+        },{
+            new:true,
+            returnOriginal:false,
+            returnDocument:true,
+        }).populate(["owner"])
+   
 }
 
 console.log(updatedImage,response)

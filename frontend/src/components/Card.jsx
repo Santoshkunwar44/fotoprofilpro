@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import "./card.css";
-import { Link, useToast } from '@chakra-ui/react'
+import "./card.css"
+
 import {
   Accordion,
   AccordionItem,
@@ -18,7 +18,7 @@ import { actionCreators } from "../redux/store";
 import {useNavigate} from "react-router-dom"
 import { ImageService as ImageServiceClass } from "../utils/services/ImageService";
 
-const Card = () => {
+const Card = ({type}) => {
 
   const [uploadProgress,setUploadProgress]  =useState(0);
   const fileRef = useRef()
@@ -52,7 +52,8 @@ const Card = () => {
     AddCollectionUrl,
     setMjProgress,
     setMessageId,
-    user
+    user,
+    type,
   });
 
 const handleFileChange =async(event)=>{
@@ -63,7 +64,6 @@ const handleFileChange =async(event)=>{
 
 
 
-console.log(uploadConfig.current.messageId)
 
 
 
@@ -116,12 +116,13 @@ console.log(uploadConfig.current.messageId)
         }
 
       {
-   imgPrompt  &&  <button className="create_variation_button" onClick={()=>ImageService.createImagine()}> {creatingImagine ? "STARTING...": "GET IMAGE VARIATION"} </button>
+   imgPrompt ?    type==="imagine" ? <button className="create_variation_button" onClick={() =>ImageService.createImagine()}> {creatingImagine ? "STARTING...": "GET IMAGE VARIATION"} </button> :   <button className="create_variation_button" onClick={() =>ImageService.createDescribe()}> {creatingImagine ? "DESCRIBING...": "DESCRIBE IMAGE"} </button> :""
+   
       }
       </div>
       <div className="create_information_box">
 
-      <p>After you upload  your image . It may take a bit time  . So we whenever the image variations are ready to use , we will sent  you an email . or you can track the progress through my assets page .</p>
+      <p>After you upload  your image . It may take a bit time  . So we whenever the {type==="imagine" ? "image variation is ready ":"image describe is ready"}  , we will sent  you an email . or you can track the progress through my assets page or click button below.</p>
      {
 messageId &&       <button  onClick={()=>navigate(`/assets/${messageId}`)}>Track progress</button>
       }

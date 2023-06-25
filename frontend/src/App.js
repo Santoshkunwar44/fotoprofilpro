@@ -11,6 +11,7 @@ import Progress from "./pages/Progress/Progress";
 import { useSelector } from "react-redux";
 import Pricing from "./pages/pricing/Pricing";
 import Loader from "./layouts/loader/Loader";
+import Describe from "./pages/describe/Describe";
 
 function App() {
   const  {unseenImagesCount,activeMessageId,loading} =useSelector(state=>state.image);
@@ -28,6 +29,7 @@ function App() {
        <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/create" element={<Create/>}/>
+        <Route path="/describe" element={<Describe/>}  />
         <Route path="/services" element={<Workspace/>}/>
          <Route path="/assets/:messageId" element={<Progress/>}/>
          <Route  path="/assets" element={<History/>}/>
