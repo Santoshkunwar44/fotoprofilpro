@@ -11,8 +11,8 @@ const PromptInfo = ({activeImage,messageId,progressPercent}) => {
           </div>
               <div className={styles.prompt_info_list}>
 
+                <p> Id : {messageId}</p>
                 <p>uploaded {format(activeImage?.createdAt)}</p>
-                <p>Message Id : {messageId}</p>
                 <p>Service : {activeImage?.type}</p>
                 <p>Status : {activeImage?.completed ? "completed":"processing"}</p>
             

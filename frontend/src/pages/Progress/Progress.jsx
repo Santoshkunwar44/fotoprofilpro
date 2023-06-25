@@ -11,6 +11,7 @@ import PromptInfo from "../../components/upload/promtInfo/PromptInfo";
 import CircularProgressBox from "../../components/upload/CircularProgress/CircularProgress";
 import ImageBoxDemo from "../../components/upload/ImageBoxDemo/ImageBoxDemo";
 import DescribeText from "../../components/upload/DescribeText/DescribeText";
+import { ImageContainer } from "../../components/upload/ImageContainer/ImageContainer";
 
 const Progress = () => {
   const {messageId} = useParams()
@@ -118,15 +119,16 @@ const Progress = () => {
         {/* <Buttons/> */}
        {
 
-       activeImage && activeImage.type !== "describe" ? <ImageBoxDemo activeImage={activeImage} /> :""
+       activeImage &&  <ImageBoxDemo activeImage={activeImage} /> 
        }
         </div>
         <div className={styles.image_info_answer_container}>
         
         {
 
-        activeImage && activeImage.type ==="describe" ? <DescribeText activeImage={activeImage}/>:""
-        } 
+        activeImage ? activeImage.type ==="describe" ? <DescribeText activeImage={activeImage}/>:<ImageContainer activeImage={activeImage}/>:null
+        }
+
 
         </div>
         {/* <Buttons/> */}

@@ -1,0 +1,43 @@
+.image_variation_wrapper{
+
+    position: relative;
+cursor: pointer;
+transition: all .3s ease-in-out;
+}
+.image_bg_icon{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0.8;
+    font-size: 5rem;
+}
+.image_variation_wrapper:hover{
+    scale: 1.04;
+}
+.image_variation_wrapper img{
+    width: 100% !important;
+    height: 100% !important;
+
+}
+
+.image_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 300px 300px; */
+    gap: 10px;
+    margin:auto;
+    
+}
+@media screen  and (max-width:992px){
+    
+    .image_container{
+        grid-template-columns: 1fr 1fr ;
+    }
+    .image_container{
+
+        width: 80%;
+    }
+}
