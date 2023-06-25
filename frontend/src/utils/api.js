@@ -34,6 +34,9 @@ export const getCountUnseenImagesApi=(userId)=>axiosInstance.get(`/image/countUn
 export const setUnseenImageToSeenApi=(owner)=>axiosInstance.put(`/image/setUnseenToseen/${owner}`)
 
 export const addButtonMessageIdApi=(messageId,data)=>axiosInstance.put(`/image/addBtnMessageId/${messageId}`,data)
+
+export const setUnseenToSingleImageApi=(owner,imageId)=>axiosInstance.put(`/image/setUnseenToseen/${owner}?imageId=${imageId}`)
+
 // user api
 
 export const loginApi=(data)=>axiosInstance.post("/auth/login",data)

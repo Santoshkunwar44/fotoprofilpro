@@ -71,19 +71,27 @@ class ImageController{
 
     async setUnseenImageToSeen(req,res){
         const {owner} =req.params;
+        const {imageId}= req.query;
+
         try {
 
+            if(imageId){
+                await ImageModel.findByIdAndUpdate(imageId,{
+                    seen:true
+                })
+            }else{
 
-            await ImageModel.updateMany({
-                owner,
-                seen:false,
-            },
-            {
-                seen:true                
-            });
-
-            res.status(200).json({message:"successfuul",success:true})
-            
+                await ImageModel.updateMany({
+                    owner,
+                    seen:false,
+                },
+                {
+                    seen:true                
+                });
+                
+            }
+                res.status(200).json({message:"successfull",success:true})
+                
         } catch (error) {
             res.status(500).json({message:error.message,success:false})
         }
@@ -118,6 +126,7 @@ class ImageController{
             res.status(500).json({message:error.message,success:false})
         }
     }
+
 }
 
 module.exports = new ImageController();

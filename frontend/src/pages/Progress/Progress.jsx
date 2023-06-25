@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom"
 import useFetch from "../../hooks/useFetch";
 import { useEffect, useRef, useState } from "react";
 import {format} from "timeago.js"
-import { getMjResponseApi } from "../../utils/api";
+import { getMjResponseApi, setUnseenImageToSeenApi, setUnseenToSingleImageApi } from "../../utils/api";
 import Buttons from "../../components/Buttons/Buttons";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/store";
@@ -65,6 +65,7 @@ const Progress = () => {
 
   useEffect(()=>{
     refetch()
+    handleSetImageToSeen()
   },[refresh])
 
   useEffect(()=>{
@@ -75,6 +76,19 @@ const Progress = () => {
     }
   },[loading])
 
+
+
+  const handleSetImageToSeen=async()=>{
+    if(!data || !activeImage)return;
+    if(activeImage.seen)return;
+    
+        try {
+        await setUnseenToSingleImageApi(data?._id,activeImage?._id)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const fetchProgressCount=async(messageId)=>{
 
     try {

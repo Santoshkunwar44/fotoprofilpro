@@ -9,6 +9,7 @@ class ImageService{
     constructor({   
          imgPrompt,
         uploadConfig,
+        setCreatingImagine,
         StopFetching,
         StartFetching,
         AddCollectionUrl,
@@ -23,6 +24,7 @@ class ImageService{
         this.AddCollectionUrl=AddCollectionUrl;
         this.setUploadProgress = setUploadProgress;
         this.AddMJImages = AddMJImages;
+        this.setCreatingImagine = setCreatingImagine;
         this.StartFetching= StartFetching;
         this.imgPrompt= imgPrompt;
         this.StopFetching = StopFetching;
@@ -59,8 +61,8 @@ class ImageService{
     async createImagine(){
       const textPrompt = `${this.imgPrompt} ultra realistic mixed `
         try {   
-              
 
+            this.setCreatingImagine(true)
                 const {data,status} = await mjImagineApi({
                     msg:textPrompt
                 });
@@ -73,9 +75,11 @@ class ImageService{
                         promtImg:this.imgPrompt
                     })
                     this.setMessageId(messageId)
+                    this.setCreatingImagine(false)
                     this.setImgPrompt("")
               }
         } catch (error) {
+          this.setCreatingImagine(false)
             console.log(error)
         }
     }
