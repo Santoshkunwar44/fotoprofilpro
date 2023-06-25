@@ -9,17 +9,21 @@ import useSetup from "./hooks/useSetup";
 import useSocket from "./hooks/useSocket";
 import Progress from "./pages/Progress/Progress";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import Pricing from "./pages/pricing/Pricing";
+import Loader from "./layouts/loader/Loader";
 
 function App() {
-  const  {unseenImagesCount,activeMessageId} =useSelector(state=>state.image);
-useSetup();
-useSocket(activeMessageId,unseenImagesCount) 
+  const  {unseenImagesCount,activeMessageId,loading} =useSelector(state=>state.image);
+  useSetup();
+  useSocket(activeMessageId,unseenImagesCount) 
 
   return (
     <>
       <div className="App">
+
+          {
+            loading && <Loader/>
+          }
        <Navbar/>
        <Routes>
         <Route path="/" element={<Home/>}/>

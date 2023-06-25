@@ -37,20 +37,16 @@ useEffect(()=>{
 },[activeMessageId,unseen])
 
   const handleSocketResponse=(data)=>{
-  console.log("incoming",activeIdRef.current)
+  console.log("incoming",data)
 
     
-    if(data.type==="imagine"){
-      open({text:"Your variation image is ready to use !!",type:"success"});
-
-    }else{
-      open({text:"Image Fetched !!",type:"success"});
-    }
-
-
-     if(activeIdRef.current===data.messageId){
+  
+    
+    if(activeIdRef.current===data.messageId){
        setRefreshAction()
-     }else{
+    open({text:"Your variation image is ready to use !!",type:"success"}); 
+    }else{
+       open({text:"Your variation image is ready to use !!",type:"success"});
        addUnseenMessageCountAction(unseenMsgRef.current+1);
       }
     

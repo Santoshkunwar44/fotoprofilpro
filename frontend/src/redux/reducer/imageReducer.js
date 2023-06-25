@@ -8,7 +8,8 @@ const INITIAL_STATE = {
     activeMessageId: null,
     unseenImagesCount: 0,
     activeImage: null,
-    refresh: false
+    refresh: false,
+    loading:false,
 
 }
 export const imageReducer = (state = INITIAL_STATE, action) => {
@@ -37,6 +38,9 @@ export const imageReducer = (state = INITIAL_STATE, action) => {
             
         case ActionTypes.SET_REFRESH:
             return { ...state, refresh: !state.refresh }
+
+        case ActionTypes.SET_LOADING:
+            return {...state,loading:action.payload}
 
 
         default:

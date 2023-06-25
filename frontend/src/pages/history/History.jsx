@@ -16,7 +16,7 @@ export const History = () => {
   const dispatch = useDispatch()
 
   const {data:user} =useSelector(state=>state.user)  
-  const {addUnseenMessageCountAction} = bindActionCreators(actionCreators,dispatch)
+  const {addUnseenMessageCountAction ,setLoadingAction} = bindActionCreators(actionCreators,dispatch)
 
 const [pendingRequest,setPendingRequest] =useState(null)
 const [completedRequest,setCompletedRequest] =useState(null)
@@ -36,10 +36,23 @@ useEffect(()=>{
 
 useEffect(()=>{
   if(!user)return;
-  fetchCompletedRequest()
-  fetchPeningRequest()
+  StartFetchingImages()
   
 },[user?._id])
+
+
+const StartFetchingImages=async()=>{
+
+  try {
+      setLoadingAction(true)
+      await fetchCompletedRequest()
+      await fetchPeningRequest()
+      setLoadingAction(false)
+  } catch (error) {
+      setLoadingAction(false)
+  }
+
+}
 
 const handleSetUnseenToSeen=async()=>{
   try {

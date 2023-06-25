@@ -16,12 +16,12 @@ const Progress = () => {
   const dispatch = useDispatch()
 
   // const 
-  const {activeImage ,refresh ,activeMessageId} = useSelector(state=>state.image)
+  const {activeImage ,refresh } = useSelector(state=>state.image)
   const [progressPercent,setProcessPercent  ] = useState(0);
 
 
 
-  const {addActiveImageAction ,addActiveMessageIdAction}  = bindActionCreators(actionCreators,dispatch )
+  const {addActiveImageAction ,addActiveMessageIdAction ,setLoadingAction}  = bindActionCreators(actionCreators,dispatch )
 
   const intervalRef =useRef()
   
@@ -35,13 +35,10 @@ const Progress = () => {
     }
   },[])
 
-  useEffect(()=>{
-    refetch()
-  },[refresh])
+
 
   useEffect(()=>{
     if(!messageId || !activeImage)return;
-
     if(activeImage.completed)return;
 
 
@@ -60,13 +57,23 @@ const Progress = () => {
 
 
   useEffect(()=>{
-    if(progressPercent===100 || activeImage?.completed){
+    if(progressPercent===100 ){
       clearInterval(intervalRef.current)
     }
-  },[progressPercent,activeImage])
+  },[progressPercent])
 
 
+  useEffect(()=>{
+    refetch()
+  },[refresh])
 
+  useEffect(()=>{
+    if(loading){
+      setLoadingAction(true)
+    }else{
+      setLoadingAction(false)
+    }
+  },[loading])
 
   const fetchProgressCount=async(messageId)=>{
 
@@ -75,9 +82,10 @@ const Progress = () => {
      setProcessPercent( data.progress)
 
     } catch (error) {
-      
+      console.log(error)
     }
   }
+
 
 
 
@@ -134,7 +142,7 @@ const Progress = () => {
             <div className={styles.each_image}>
                 <img src={img} alt="image variations" />
             </div>
-              )) : Array.from(4).fill(0).map(item=> <div className={styles.each_image}>
+              )) : [0,1,2,3 ].map(item=> <div className={styles.each_image}>
                 <BsImageAlt  className={styles.img_icon}/>
             </div>
             )

@@ -57,7 +57,7 @@ class ImageService{
 
 
     async createImagine(){
-      const textPrompt = `${this.imgPrompt} ultra realistic mixed colorful `
+      const textPrompt = `${this.imgPrompt} ultra realistic mixed `
         try {   
               
 

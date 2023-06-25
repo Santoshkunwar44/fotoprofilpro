@@ -8,7 +8,7 @@ import { getCountUnseenImagesApi, loggedInUserApi } from "../utils/api";
 const useSetup=()=>{
 
 const dispatch = useDispatch()
-  const {addUserAction ,addUnseenMessageCountAction} = bindActionCreators(actionCreators,dispatch );
+  const {addUserAction ,addUnseenMessageCountAction ,setLoadingAction} = bindActionCreators(actionCreators,dispatch );
   const {data:user} =useSelector(state=>state.user)
 
   useEffect(()=>{
@@ -31,13 +31,17 @@ const dispatch = useDispatch()
  }
   const fetchLoggedInUser=async()=>{
     try {
+        setLoadingAction(true)
          const res = await loggedInUserApi();
          if(res.status===200){
           addUserAction(res.data.message)
+          setLoadingAction(false)
+
          }
 
     } catch (error) {
         console.log(error)
+        setLoadingAction(false)
     }
   }
 

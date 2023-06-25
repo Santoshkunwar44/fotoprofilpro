@@ -58,3 +58,31 @@ body{
 .css-ol3i12{
   stroke: #3f51b533 !important; 
 }
+.loader_bg{
+  width: 100%;
+  height:100vh;
+  display: grid;
+  place-items: center;
+  position:absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  background-color: rgba(10, 10, 10, 0.185);
+  backdrop-filter: blur(2px);
+}
+.loader_content img{
+  animation: rotate  800ms infinite alternate-reverse ease-in-out;
+width: 140px ;
+}
+@keyframes rotate{
+
+  0%{
+    rotate: 0deg;
+    scale: 0.9;
+  }
+  100%{
+    scale: 1;
+    rotate: 360deg;
+  }
+  
+}

@@ -77,3 +77,10 @@ export const setRefreshAction=()=>(dispatch)=>{
         
     })
 }
+export const setLoadingAction=(payload)=>(dispatch)=>{
+    // console.log(payload,"payload")
+    dispatch({
+        type:ActionTypes.SET_LOADING,
+        payload
+    })
+}
