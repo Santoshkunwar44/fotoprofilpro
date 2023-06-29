@@ -47,3 +47,7 @@ export const registerApi=(data)=>axiosInstance.post("/auth/register",data)
 export const loggedInUserApi=()=>axiosInstance.get("/auth/loggedinUser")
 
 export const logoutApi=()=>axiosInstance.post("/auth/logout")
+
+// payment 
+
+export const get_redirect_url_Api=(data)=>axiosInstance.post(`/payment/get_redirect_url`,data);

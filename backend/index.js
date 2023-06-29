@@ -9,6 +9,7 @@ const server = http.createServer(app);
 const MongoStore = require("connect-mongo")
 const session = require("express-session")
 const { Server } = require("socket.io");
+const midtransClient = require("midtrans-client")
 require("dotenv").config()
 const io = new Server(server, {
   cors: {
@@ -63,8 +64,6 @@ app.use(
     store,
     cookie:{
       secure:true,
-
-    
       httpOnly:true,
       maxAge:31556952000,
       sameSite:"none"
@@ -75,6 +74,12 @@ app.use(
 require("dotenv").config()
 app.use(express.json())
 app.use(morgan("short"))
+new midtransClient.CoreApi({
+  isProduction: false,
+  serverKey:"Mid-server-8L5tEEBDf5wRa_Xni8zHSqG5",
+  clientKey: "Mid-client-ibkKpNbFXK63OeW7"
+});
+
 
 
 

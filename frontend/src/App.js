@@ -12,6 +12,10 @@ import { useSelector } from "react-redux";
 import Pricing from "./pages/pricing/Pricing";
 import Loader from "./layouts/loader/Loader";
 import Describe from "./pages/describe/Describe";
+import Payment from "./pages/payment/Payment";
+import PaymentFailed from "./components/payment/PaymentFailed";
+import PaymentSuccess from "./components/payment/PaymentSuccess";
+import PaymentPending from "./components/payment/PaymentPending";
 
 function App() {
   const  {unseenImagesCount,activeMessageId,loading} =useSelector(state=>state.image);
@@ -35,6 +39,12 @@ function App() {
          <Route path="/assets/:messageId" element={<Progress/>}/>
          <Route  path="/assets" element={<History/>}/>
          <Route  path="/pricing" element={<Pricing/>}/>
+         <Route path="/payment" element={<Payment/>}>
+          <Route path="failed" element={<PaymentFailed/>}/>
+          <Route path="success" element={<PaymentSuccess/>}/>
+          <Route  path="pending" element={<PaymentPending/>}/>
+          
+          </Route>
        </Routes>
       </div>
     </>
