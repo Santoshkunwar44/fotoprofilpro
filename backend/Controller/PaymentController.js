@@ -46,7 +46,7 @@ snap.createTransaction(parameter)
 
 
         async paymentWebhookHandler(req,res){
-            console.log(req.body)
+            console.log("payment",req.body)
             res.status(200).json({message:"message received"})
             
         }
