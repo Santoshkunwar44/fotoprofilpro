@@ -1,3 +1,4 @@
+const { paymentWebhookHandler } = require("../Controller/PaymentController");
 const ImageModel = require("../Model/ImageModel");
 const EmailService = require("../utils/services/EmailService");
 const { OnlineUsers } = require("../utils/services/SocketService")
@@ -87,5 +88,6 @@ res.status(200).json({message:"email sent succesfully",success:true})
 
 
 })
+router.post("/payment",paymentWebhookHandler)
 
 module.exports = router;
