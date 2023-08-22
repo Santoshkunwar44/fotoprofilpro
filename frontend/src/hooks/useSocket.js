@@ -25,7 +25,7 @@ const useSocket=(activeMessageId,unseen)=>{
 useEffect(()=>{
 
   if(!loggedInUser?.email)return;
-  socketRef.current =  io(process.env.REACT_APP_SOCKET_URL);
+  socketRef.current =  io("http://fotoprofilpro.com/api");
   socketRef.current.emit("join",loggedInUser?.email)
   socketRef.current.on("response",handleSocketResponse)
   
