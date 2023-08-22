@@ -147,3 +147,7 @@ color: gray;
 .create_information_box button:hover{
     scale: 1.04;
 }
+.disable_card{
+    opacity: 0.8;
+    pointer-events: none !important;
+}

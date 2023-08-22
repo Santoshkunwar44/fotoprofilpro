@@ -1,11 +1,16 @@
+import { useSelector } from "react-redux"
 import Card from "../../components/Card"
+import AlertLayout from "../../layouts/Alert/Alert"
 
 const Describe = () => {
+  const {data} = useSelector(state=>state.user)
   return (
     
     <>
-        <Card/>
-    {/* <h1>hello</h1> */}
+       {
+      !data ? <AlertLayout type={"error"} text={"Login to use the service."} buttonText={"LOGIN"} url={"/login"}/> :""
+      }
+      <Card disable={ !Boolean(data)} type={"describe"}/> 
     </>
   )
 }

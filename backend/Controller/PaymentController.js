@@ -21,6 +21,14 @@ let parameter = {
     },
     "item_details":item,
     "customer_details":user,
+     payment_method_options: {
+    bank_transfer: {
+      banks: ['bca',"bni"], // Array of supported bank transfer options (e.g., ['bca', 'bni'])
+    },
+    gopay: {
+      callback_url: 'https://fotoprofilpro.netlify.app/api/webhook/payment', // The URL to receive GoPay payment status notification
+    },
+  },
    
 };
 

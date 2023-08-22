@@ -26,7 +26,7 @@ import { actionCreators } from '../../redux/store'
     password:""
   })
 
-  console.log(authData)
+  // console.log(authData)
 
 
   useEffect(()=>{
@@ -74,7 +74,7 @@ import { actionCreators } from '../../redux/store'
 
     return (
       <>
-        <span onClick={onOpen}>{children}</span>
+        <span style={{height:"100%"}} onClick={onOpen}>{children}</span>
   
         <Modal  isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

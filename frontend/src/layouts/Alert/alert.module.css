@@ -1,0 +1,42 @@
+.alertLayout{
+    height: 55px;
+    border-radius: 4px;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;   
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: var(--btn_bg);
+}
+
+.alertLayout svg{
+    font-size: 1.6rem;
+}
+.alertLayout p{
+    letter-spacing: 1px;
+
+    font-size: 15px;
+}
+.alert_info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 1rem;
+}
+.alertLayout button{
+    border: none;
+    letter-spacing: 2px;
+    height: 100%;
+    width: 150px;
+    padding:  0 1rem;
+    background-color: #673ab7;
+    transition: all .3s ease-in-out;
+}
+.alertLayout button:hover{
+    background-color: #5410cac9 !important;
+}
+.button_link{
+    border: none;
+    height: 100%;
+}

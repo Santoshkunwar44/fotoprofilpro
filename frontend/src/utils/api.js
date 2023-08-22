@@ -8,7 +8,7 @@ const MjAxiosInstance =   axios.create({
     }
 })
 export const axiosInstance = axios.create({
-    baseURL:process.env.REACT_APP_BACKEND_URL,
+    baseURL:"http://fotoprofilpro.com/api",
     withCredentials:true
 })
 

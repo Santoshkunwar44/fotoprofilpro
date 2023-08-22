@@ -18,7 +18,9 @@ import { actionCreators } from "../redux/store";
 import {useNavigate} from "react-router-dom"
 import { ImageService as ImageServiceClass } from "../utils/services/ImageService";
 
-const Card = ({type}) => {
+const Card = ({type,disable}) => {
+
+
 
   const [uploadProgress,setUploadProgress]  =useState(0);
   const fileRef = useRef()
@@ -64,12 +66,13 @@ const handleFileChange =async(event)=>{
 
 
 
-
+  // console.log(disable)
+  
 
 
   return (
     <>
-    <div className="card_container">
+    <div className={`card_container ${disable && "disable_card"}`}>
 
       <img className="bug_image" style={{zIndex:"-1"}} src="/images/bug.png" alt="hieap" />
       <div className="Card">
@@ -89,7 +92,7 @@ const handleFileChange =async(event)=>{
         <input type="file" style={{display:"none"}}  ref={fileRef} onChange={handleFileChange}/>
         </div>
  
-        <div class="notesHeader">
+        <div className="notesHeader">
           <div className="hrline"></div>
           <p className="or_text">OR</p>
           <div className="hrline"></div>
