@@ -15,8 +15,8 @@ const io = new Server(server, {
   cors: {
     origin: [
       process.env.FRONTEND_URL,
-      "http://fotoprofilpro.com",
       "http://localhost:3000",
+      "http://127.0.1:3000"
     ],    
     methods: ["GET", "POST","PUT"],
     credentials: true,
